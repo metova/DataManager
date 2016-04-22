@@ -10,6 +10,23 @@
 		6E478FEC1CAD8D81003F2AE1 /* DataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E478FEB1CAD8D81003F2AE1 /* DataManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E478FF31CAD8D81003F2AE1 /* DataManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E478FE81CAD8D81003F2AE1 /* DataManager.framework */; };
 		6E478FF81CAD8D81003F2AE1 /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E478FF71CAD8D81003F2AE1 /* DataManagerTests.swift */; };
+		6E4790031CAD8DBF003F2AE1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4790021CAD8DBF003F2AE1 /* DataManager.swift */; };
+		6E6DD2D61CB844FA00DD3FB5 /* DataManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E6DD2CC1CB844FA00DD3FB5 /* DataManager.framework */; };
+		6E6DD2FF1CB846C800DD3FB5 /* DataManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E6DD2F51CB846C700DD3FB5 /* DataManager.framework */; };
+		6E6DD30E1CB85E0F00DD3FB5 /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E478FF71CAD8D81003F2AE1 /* DataManagerTests.swift */; };
+		6E6DD30F1CB85E1100DD3FB5 /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E478FF71CAD8D81003F2AE1 /* DataManagerTests.swift */; };
+		6EFD334C1CC931E4009AD145 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4790021CAD8DBF003F2AE1 /* DataManager.swift */; };
+		6EFD334D1CC931E5009AD145 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4790021CAD8DBF003F2AE1 /* DataManager.swift */; };
+		6EFD334E1CC931E7009AD145 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4790021CAD8DBF003F2AE1 /* DataManager.swift */; };
+		6EFD33561CC93622009AD145 /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6EFD33501CC935DA009AD145 /* TestModel.xcdatamodeld */; };
+		6EFD33571CC93624009AD145 /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6EFD33501CC935DA009AD145 /* TestModel.xcdatamodeld */; };
+		6EFD33581CC93625009AD145 /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6EFD33501CC935DA009AD145 /* TestModel.xcdatamodeld */; };
+		6EFD335D1CC93770009AD145 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFD33591CC93770009AD145 /* Person+CoreDataProperties.swift */; };
+		6EFD335E1CC93770009AD145 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFD33591CC93770009AD145 /* Person+CoreDataProperties.swift */; };
+		6EFD335F1CC93770009AD145 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFD33591CC93770009AD145 /* Person+CoreDataProperties.swift */; };
+		6EFD33601CC93770009AD145 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFD335A1CC93770009AD145 /* Person.swift */; };
+		6EFD33611CC93770009AD145 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFD335A1CC93770009AD145 /* Person.swift */; };
+		6EFD33621CC93770009AD145 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFD335A1CC93770009AD145 /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -20,15 +37,40 @@
 			remoteGlobalIDString = 6E478FE71CAD8D81003F2AE1;
 			remoteInfo = DataManager;
 		};
+		6E6DD2D71CB844FA00DD3FB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E478FDF1CAD8D81003F2AE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E6DD2CB1CB844FA00DD3FB5;
+			remoteInfo = "DataManager OSX";
+		};
+		6E6DD3001CB846C800DD3FB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E478FDF1CAD8D81003F2AE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E6DD2F41CB846C700DD3FB5;
+			remoteInfo = "DataManager tvOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		6E478FE81CAD8D81003F2AE1 /* DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E478FEB1CAD8D81003F2AE1 /* DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		6E478FED1CAD8D81003F2AE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E478FF21CAD8D81003F2AE1 /* DataManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E478FF21CAD8D81003F2AE1 /* DataManager iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DataManager iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E478FF71CAD8D81003F2AE1 /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
 		6E478FF91CAD8D81003F2AE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E4790021CAD8DBF003F2AE1 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		6E6DD2CC1CB844FA00DD3FB5 /* DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E6DD2D51CB844FA00DD3FB5 /* DataManager OSX Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DataManager OSX Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E6DD2E81CB845E900DD3FB5 /* DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E6DD2F51CB846C700DD3FB5 /* DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E6DD2F91CB846C700DD3FB5 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
+		6E6DD2FE1CB846C800DD3FB5 /* DataManager tvOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DataManager tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E6DD3051CB846C800DD3FB5 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
+		6EFD33511CC935DA009AD145 /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
+		6EFD33591CC93770009AD145 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6EFD335A1CC93770009AD145 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,14 +89,51 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6E6DD2C81CB844FA00DD3FB5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6DD2D21CB844FA00DD3FB5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E6DD2D61CB844FA00DD3FB5 /* DataManager.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6DD2E41CB845E900DD3FB5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6DD2F11CB846C700DD3FB5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6DD2FB1CB846C800DD3FB5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E6DD2FF1CB846C800DD3FB5 /* DataManager.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		6E478FDE1CAD8D81003F2AE1 = {
 			isa = PBXGroup;
 			children = (
-				6E478FEA1CAD8D81003F2AE1 /* DataManager */,
-				6E478FF61CAD8D81003F2AE1 /* DataManagerTests */,
+				6E478FEA1CAD8D81003F2AE1 /* Sources */,
+				6E478FF61CAD8D81003F2AE1 /* Tests */,
 				6E478FE91CAD8D81003F2AE1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,27 +142,70 @@
 			isa = PBXGroup;
 			children = (
 				6E478FE81CAD8D81003F2AE1 /* DataManager.framework */,
-				6E478FF21CAD8D81003F2AE1 /* DataManagerTests.xctest */,
+				6E478FF21CAD8D81003F2AE1 /* DataManager iOS Tests.xctest */,
+				6E6DD2CC1CB844FA00DD3FB5 /* DataManager.framework */,
+				6E6DD2D51CB844FA00DD3FB5 /* DataManager OSX Tests.xctest */,
+				6E6DD2E81CB845E900DD3FB5 /* DataManager.framework */,
+				6E6DD2F51CB846C700DD3FB5 /* DataManager.framework */,
+				6E6DD2FE1CB846C800DD3FB5 /* DataManager tvOS Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6E478FEA1CAD8D81003F2AE1 /* DataManager */ = {
+		6E478FEA1CAD8D81003F2AE1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				6E478FEB1CAD8D81003F2AE1 /* DataManager.h */,
-				6E478FED1CAD8D81003F2AE1 /* Info.plist */,
+				6E6DD2C41CB842CA00DD3FB5 /* Core */,
+				6E6DD2C51CB842D000DD3FB5 /* Supporting Files */,
 			);
-			path = DataManager;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		6E478FF61CAD8D81003F2AE1 /* DataManagerTests */ = {
+		6E478FF61CAD8D81003F2AE1 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				6E478FF71CAD8D81003F2AE1 /* DataManagerTests.swift */,
+				6E6DD30D1CB85CDF00DD3FB5 /* Test Data Model */,
+				6E6DD30C1CB85AF400DD3FB5 /* Supporting Files */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		6E6DD2C41CB842CA00DD3FB5 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				6E4790021CAD8DBF003F2AE1 /* DataManager.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		6E6DD2C51CB842D000DD3FB5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6E478FEB1CAD8D81003F2AE1 /* DataManager.h */,
+				6E6DD2F91CB846C700DD3FB5 /* Info-tvOS.plist */,
+				6E478FED1CAD8D81003F2AE1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6E6DD30C1CB85AF400DD3FB5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6E6DD3051CB846C800DD3FB5 /* Info-tvOS.plist */,
 				6E478FF91CAD8D81003F2AE1 /* Info.plist */,
 			);
-			path = DataManagerTests;
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6E6DD30D1CB85CDF00DD3FB5 /* Test Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				6EFD33591CC93770009AD145 /* Person+CoreDataProperties.swift */,
+				6EFD335A1CC93770009AD145 /* Person.swift */,
+				6EFD33501CC935DA009AD145 /* TestModel.xcdatamodeld */,
+			);
+			name = "Test Data Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,12 +219,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6E6DD2C91CB844FA00DD3FB5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6DD2E51CB845E900DD3FB5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6DD2F21CB846C700DD3FB5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		6E478FE71CAD8D81003F2AE1 /* DataManager */ = {
+		6E478FE71CAD8D81003F2AE1 /* DataManager iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6E478FFC1CAD8D81003F2AE1 /* Build configuration list for PBXNativeTarget "DataManager" */;
+			buildConfigurationList = 6E478FFC1CAD8D81003F2AE1 /* Build configuration list for PBXNativeTarget "DataManager iOS" */;
 			buildPhases = (
 				6E478FE31CAD8D81003F2AE1 /* Sources */,
 				6E478FE41CAD8D81003F2AE1 /* Frameworks */,
@@ -113,14 +256,14 @@
 			);
 			dependencies = (
 			);
-			name = DataManager;
+			name = "DataManager iOS";
 			productName = DataManager;
 			productReference = 6E478FE81CAD8D81003F2AE1 /* DataManager.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		6E478FF11CAD8D81003F2AE1 /* DataManagerTests */ = {
+		6E478FF11CAD8D81003F2AE1 /* DataManager iOS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6E478FFF1CAD8D81003F2AE1 /* Build configuration list for PBXNativeTarget "DataManagerTests" */;
+			buildConfigurationList = 6E478FFF1CAD8D81003F2AE1 /* Build configuration list for PBXNativeTarget "DataManager iOS Tests" */;
 			buildPhases = (
 				6E478FEE1CAD8D81003F2AE1 /* Sources */,
 				6E478FEF1CAD8D81003F2AE1 /* Frameworks */,
@@ -131,9 +274,99 @@
 			dependencies = (
 				6E478FF51CAD8D81003F2AE1 /* PBXTargetDependency */,
 			);
-			name = DataManagerTests;
+			name = "DataManager iOS Tests";
 			productName = DataManagerTests;
-			productReference = 6E478FF21CAD8D81003F2AE1 /* DataManagerTests.xctest */;
+			productReference = 6E478FF21CAD8D81003F2AE1 /* DataManager iOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6E6DD2CB1CB844FA00DD3FB5 /* DataManager OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E6DD2DD1CB844FA00DD3FB5 /* Build configuration list for PBXNativeTarget "DataManager OSX" */;
+			buildPhases = (
+				6E6DD2C71CB844FA00DD3FB5 /* Sources */,
+				6E6DD2C81CB844FA00DD3FB5 /* Frameworks */,
+				6E6DD2C91CB844FA00DD3FB5 /* Headers */,
+				6E6DD2CA1CB844FA00DD3FB5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DataManager OSX";
+			productName = "DataManager OSX";
+			productReference = 6E6DD2CC1CB844FA00DD3FB5 /* DataManager.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6E6DD2D41CB844FA00DD3FB5 /* DataManager OSX Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E6DD2E01CB844FA00DD3FB5 /* Build configuration list for PBXNativeTarget "DataManager OSX Tests" */;
+			buildPhases = (
+				6E6DD2D11CB844FA00DD3FB5 /* Sources */,
+				6E6DD2D21CB844FA00DD3FB5 /* Frameworks */,
+				6E6DD2D31CB844FA00DD3FB5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6E6DD2D81CB844FA00DD3FB5 /* PBXTargetDependency */,
+			);
+			name = "DataManager OSX Tests";
+			productName = "DataManager OSXTests";
+			productReference = 6E6DD2D51CB844FA00DD3FB5 /* DataManager OSX Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6E6DD2E71CB845E900DD3FB5 /* DataManager watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E6DD2ED1CB845E900DD3FB5 /* Build configuration list for PBXNativeTarget "DataManager watchOS" */;
+			buildPhases = (
+				6E6DD2E31CB845E900DD3FB5 /* Sources */,
+				6E6DD2E41CB845E900DD3FB5 /* Frameworks */,
+				6E6DD2E51CB845E900DD3FB5 /* Headers */,
+				6E6DD2E61CB845E900DD3FB5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DataManager watchOS";
+			productName = "DataManager watchOS";
+			productReference = 6E6DD2E81CB845E900DD3FB5 /* DataManager.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6E6DD2F41CB846C700DD3FB5 /* DataManager tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E6DD3061CB846C800DD3FB5 /* Build configuration list for PBXNativeTarget "DataManager tvOS" */;
+			buildPhases = (
+				6E6DD2F01CB846C700DD3FB5 /* Sources */,
+				6E6DD2F11CB846C700DD3FB5 /* Frameworks */,
+				6E6DD2F21CB846C700DD3FB5 /* Headers */,
+				6E6DD2F31CB846C700DD3FB5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DataManager tvOS";
+			productName = "DataManager tvOS";
+			productReference = 6E6DD2F51CB846C700DD3FB5 /* DataManager.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6E6DD2FD1CB846C800DD3FB5 /* DataManager tvOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E6DD3091CB846C800DD3FB5 /* Build configuration list for PBXNativeTarget "DataManager tvOS Tests" */;
+			buildPhases = (
+				6E6DD2FA1CB846C800DD3FB5 /* Sources */,
+				6E6DD2FB1CB846C800DD3FB5 /* Frameworks */,
+				6E6DD2FC1CB846C800DD3FB5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6E6DD3011CB846C800DD3FB5 /* PBXTargetDependency */,
+			);
+			name = "DataManager tvOS Tests";
+			productName = "DataManager tvOSTests";
+			productReference = 6E6DD2FE1CB846C800DD3FB5 /* DataManager tvOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -152,6 +385,21 @@
 					6E478FF11CAD8D81003F2AE1 = {
 						CreatedOnToolsVersion = 7.3;
 					};
+					6E6DD2CB1CB844FA00DD3FB5 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					6E6DD2D41CB844FA00DD3FB5 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					6E6DD2E71CB845E900DD3FB5 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					6E6DD2F41CB846C700DD3FB5 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					6E6DD2FD1CB846C800DD3FB5 = {
+						CreatedOnToolsVersion = 7.3;
+					};
 				};
 			};
 			buildConfigurationList = 6E478FE21CAD8D81003F2AE1 /* Build configuration list for PBXProject "DataManager" */;
@@ -166,8 +414,13 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6E478FE71CAD8D81003F2AE1 /* DataManager */,
-				6E478FF11CAD8D81003F2AE1 /* DataManagerTests */,
+				6E478FE71CAD8D81003F2AE1 /* DataManager iOS */,
+				6E478FF11CAD8D81003F2AE1 /* DataManager iOS Tests */,
+				6E6DD2CB1CB844FA00DD3FB5 /* DataManager OSX */,
+				6E6DD2D41CB844FA00DD3FB5 /* DataManager OSX Tests */,
+				6E6DD2F41CB846C700DD3FB5 /* DataManager tvOS */,
+				6E6DD2FD1CB846C800DD3FB5 /* DataManager tvOS Tests */,
+				6E6DD2E71CB845E900DD3FB5 /* DataManager watchOS */,
 			);
 		};
 /* End PBXProject section */
@@ -187,6 +440,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6E6DD2CA1CB844FA00DD3FB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6DD2D31CB844FA00DD3FB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6DD2E61CB845E900DD3FB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6DD2F31CB846C700DD3FB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6DD2FC1CB846C800DD3FB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -194,6 +482,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E4790031CAD8DBF003F2AE1 /* DataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +491,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E478FF81CAD8D81003F2AE1 /* DataManagerTests.swift in Sources */,
+				6EFD33561CC93622009AD145 /* TestModel.xcdatamodeld in Sources */,
+				6EFD33601CC93770009AD145 /* Person.swift in Sources */,
+				6EFD335D1CC93770009AD145 /* Person+CoreDataProperties.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6DD2C71CB844FA00DD3FB5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6EFD334C1CC931E4009AD145 /* DataManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6DD2D11CB844FA00DD3FB5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E6DD30E1CB85E0F00DD3FB5 /* DataManagerTests.swift in Sources */,
+				6EFD33571CC93624009AD145 /* TestModel.xcdatamodeld in Sources */,
+				6EFD33611CC93770009AD145 /* Person.swift in Sources */,
+				6EFD335E1CC93770009AD145 /* Person+CoreDataProperties.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6DD2E31CB845E900DD3FB5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6EFD334E1CC931E7009AD145 /* DataManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6DD2F01CB846C700DD3FB5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6EFD334D1CC931E5009AD145 /* DataManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6DD2FA1CB846C800DD3FB5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E6DD30F1CB85E1100DD3FB5 /* DataManagerTests.swift in Sources */,
+				6EFD33581CC93625009AD145 /* TestModel.xcdatamodeld in Sources */,
+				6EFD33621CC93770009AD145 /* Person.swift in Sources */,
+				6EFD335F1CC93770009AD145 /* Person+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,8 +548,18 @@
 /* Begin PBXTargetDependency section */
 		6E478FF51CAD8D81003F2AE1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6E478FE71CAD8D81003F2AE1 /* DataManager */;
+			target = 6E478FE71CAD8D81003F2AE1 /* DataManager iOS */;
 			targetProxy = 6E478FF41CAD8D81003F2AE1 /* PBXContainerItemProxy */;
+		};
+		6E6DD2D81CB844FA00DD3FB5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6E6DD2CB1CB844FA00DD3FB5 /* DataManager OSX */;
+			targetProxy = 6E6DD2D71CB844FA00DD3FB5 /* PBXContainerItemProxy */;
+		};
+		6E6DD3011CB846C800DD3FB5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6E6DD2F41CB846C700DD3FB5 /* DataManager tvOS */;
+			targetProxy = 6E6DD3001CB846C800DD3FB5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -254,7 +602,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -297,7 +646,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -310,31 +660,38 @@
 		6E478FFD1CAD8D81003F2AE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DataManager/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.metova.DataManager;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DataManager;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		6E478FFE1CAD8D81003F2AE1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DataManager/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.metova.DataManager;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DataManager;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -342,7 +699,7 @@
 		6E4790001CAD8D81003F2AE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = DataManagerTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.metova.DataManagerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -352,10 +709,186 @@
 		6E4790011CAD8D81003F2AE1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = DataManagerTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.metova.DataManagerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		6E6DD2DE1CB844FA00DD3FB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = com.metova.DataManager;
+				PRODUCT_NAME = DataManager;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6E6DD2DF1CB844FA00DD3FB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = com.metova.DataManager;
+				PRODUCT_NAME = DataManager;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		6E6DD2E11CB844FA00DD3FB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.metova.DataManager-OSXTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6E6DD2E21CB844FA00DD3FB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.metova.DataManager-OSXTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6E6DD2EE1CB845E900DD3FB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Source/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.metova.DataManager;
+				PRODUCT_NAME = DataManager;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		6E6DD2EF1CB845E900DD3FB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Source/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.metova.DataManager;
+				PRODUCT_NAME = DataManager;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+		6E6DD3071CB846C800DD3FB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info-tvOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.metova.DataManager;
+				PRODUCT_NAME = DataManager;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		6E6DD3081CB846C800DD3FB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info-tvOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.metova.DataManager;
+				PRODUCT_NAME = DataManager;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Release;
+		};
+		6E6DD30A1CB846C800DD3FB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Tests/Info-tvOS.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.metova.DataManager-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		6E6DD30B1CB846C800DD3FB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Tests/Info-tvOS.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.metova.DataManager-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Release;
 		};
@@ -371,23 +904,83 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6E478FFC1CAD8D81003F2AE1 /* Build configuration list for PBXNativeTarget "DataManager" */ = {
+		6E478FFC1CAD8D81003F2AE1 /* Build configuration list for PBXNativeTarget "DataManager iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6E478FFD1CAD8D81003F2AE1 /* Debug */,
 				6E478FFE1CAD8D81003F2AE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		6E478FFF1CAD8D81003F2AE1 /* Build configuration list for PBXNativeTarget "DataManagerTests" */ = {
+		6E478FFF1CAD8D81003F2AE1 /* Build configuration list for PBXNativeTarget "DataManager iOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6E4790001CAD8D81003F2AE1 /* Debug */,
 				6E4790011CAD8D81003F2AE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E6DD2DD1CB844FA00DD3FB5 /* Build configuration list for PBXNativeTarget "DataManager OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E6DD2DE1CB844FA00DD3FB5 /* Debug */,
+				6E6DD2DF1CB844FA00DD3FB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E6DD2E01CB844FA00DD3FB5 /* Build configuration list for PBXNativeTarget "DataManager OSX Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E6DD2E11CB844FA00DD3FB5 /* Debug */,
+				6E6DD2E21CB844FA00DD3FB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E6DD2ED1CB845E900DD3FB5 /* Build configuration list for PBXNativeTarget "DataManager watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E6DD2EE1CB845E900DD3FB5 /* Debug */,
+				6E6DD2EF1CB845E900DD3FB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E6DD3061CB846C800DD3FB5 /* Build configuration list for PBXNativeTarget "DataManager tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E6DD3071CB846C800DD3FB5 /* Debug */,
+				6E6DD3081CB846C800DD3FB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E6DD3091CB846C800DD3FB5 /* Build configuration list for PBXNativeTarget "DataManager tvOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E6DD30A1CB846C800DD3FB5 /* Debug */,
+				6E6DD30B1CB846C800DD3FB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6EFD33501CC935DA009AD145 /* TestModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6EFD33511CC935DA009AD145 /* TestModel.xcdatamodel */,
+			);
+			currentVersion = 6EFD33511CC935DA009AD145 /* TestModel.xcdatamodel */;
+			path = TestModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6E478FDF1CAD8D81003F2AE1 /* Project object */;
 }
