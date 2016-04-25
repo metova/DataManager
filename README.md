@@ -17,6 +17,20 @@ DataManager is available through [CocoaPods](http://cocoapods.org). To install i
 pod 'DataManager'
 ```
 
+## Setup
+
+When your app is launched, set up 'DataManager' with the data model name and a name for the persistent store file:
+```swift
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
+    DataManager.setUpWithDataModelName("MyApp", persistentStoreName: "MyApp")
+
+    /* ... */
+
+    return true
+}
+```
+
 ## Credits
 
 DataManager is owned and maintained by [Metova Inc.](https://metova.com)
