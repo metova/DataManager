@@ -18,12 +18,14 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 DataManager is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
-    pod 'DataManager'
+pod 'DataManager'
 ```
 
-## Author
+## Credits
 
-[Metova Inc.](https://metova.com)
+MetovaBase is owned and maintained by [Metova Inc.](https://metova.com)
+
+[Contributors](https://github.com/Metova/MetovaBase/graphs/contributors)
 
 ## License
 
