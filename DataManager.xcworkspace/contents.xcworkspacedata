@@ -4,20 +4,4 @@
    <FileRef
       location = "group:DataManager.xcodeproj">
    </FileRef>
-   <Group
-      location = "container:"
-      name = "Related Files">
-      <FileRef
-         location = "group:README.md">
-      </FileRef>
-      <FileRef
-         location = "group:DataManager.podspec">
-      </FileRef>
-      <FileRef
-         location = "group:LICENSE">
-      </FileRef>
-      <FileRef
-         location = "group:Package.swift">
-      </FileRef>
-   </Group>
 </Workspace>

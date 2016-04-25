@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "DataManager"
-  s.version      = "0.0.1"
+  s.version      = "0.1.0"
   s.summary      = "DataManager is a small utility class that helps you manage Core Data."
   s.description  = <<-DESC
 DataManager takes care of Core Data boilerplate code for you. It handles setting up the Core Data stack with support for asynchronous saves. It also includes a few simple fetch and deletion methods.
@@ -23,7 +23,7 @@ DataManager takes care of Core Data boilerplate code for you. It handles setting
   s.watchos.deployment_target = "2.0"
   s.tvos.deployment_target = "9.0"
 
-  s.source       = { :git => "http://github.com/metova/DataManager.git", :tag => "0.0.1" }
+  s.source       = { :git => "http://github.com/metova/DataManager.git", :tag => "0.1.0" }
   s.source_files  = "Source/*.swift"
 
   s.framework  = "CoreData"

@@ -25,12 +25,7 @@ class DataManagerTests: XCTestCase {
     
     override func tearDown() {
         
-        do {
-            try DataManager.deleteAllObjects()
-        }
-        catch let error as NSError {
-            XCTFail("Failed to delete objects after running test: \(error.localizedDescription)")
-        }
+        DataManager.deleteAllObjects()
         
         super.tearDown()
     }

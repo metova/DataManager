@@ -275,7 +275,7 @@ public final class DataManager {
     /**
      For each entity in the model, fetches all objects into memory, iterates over each object and deletes them using the main context. Note: Errors thrown by executeFetchRequest are suppressed and logged in order to make usage less verbose. If detecting thrown errors is needed in your use case, you will need to use Core Data directly.
      */
-    public static func deleteAllObjects() throws {
+    public static func deleteAllObjects() {
         
         for entityName in managedObjectModel.entitiesByName.keys {
             

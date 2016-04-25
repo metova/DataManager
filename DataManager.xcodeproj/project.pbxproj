@@ -71,6 +71,13 @@
 		6EFD33511CC935DA009AD145 /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
 		6EFD33591CC93770009AD145 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6EFD335A1CC93770009AD145 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		6EFD336B1CCE6E27009AD145 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		6EFD336C1CCE6E27009AD145 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		6EFD336D1CCE6E27009AD145 /* DataManager.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = DataManager.podspec; sourceTree = "<group>"; };
+		6EFD336E1CCE6E27009AD145 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		6EFD336F1CCE6E27009AD145 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		6EFD33711CCE6E34009AD145 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		6EFD33751CCE6E4D009AD145 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +141,7 @@
 			children = (
 				6E478FEA1CAD8D81003F2AE1 /* Sources */,
 				6E478FF61CAD8D81003F2AE1 /* Tests */,
+				6EFD33701CCE6E27009AD145 /* Related Files */,
 				6E478FE91CAD8D81003F2AE1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -208,6 +216,20 @@
 			name = "Test Data Model";
 			sourceTree = "<group>";
 		};
+		6EFD33701CCE6E27009AD145 /* Related Files */ = {
+			isa = PBXGroup;
+			children = (
+				6EFD33751CCE6E4D009AD145 /* .gitignore */,
+				6EFD33711CCE6E34009AD145 /* .swiftlint.yml */,
+				6EFD336B1CCE6E27009AD145 /* CHANGELOG.md */,
+				6EFD336C1CCE6E27009AD145 /* README.md */,
+				6EFD336D1CCE6E27009AD145 /* DataManager.podspec */,
+				6EFD336E1CCE6E27009AD145 /* LICENSE */,
+				6EFD336F1CCE6E27009AD145 /* Package.swift */,
+			);
+			name = "Related Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -247,6 +269,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E478FFC1CAD8D81003F2AE1 /* Build configuration list for PBXNativeTarget "DataManager iOS" */;
 			buildPhases = (
+				6EFD33761CCE6EE7009AD145 /* SwiftLint */,
 				6E478FE31CAD8D81003F2AE1 /* Sources */,
 				6E478FE41CAD8D81003F2AE1 /* Frameworks */,
 				6E478FE51CAD8D81003F2AE1 /* Headers */,
@@ -283,6 +306,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E6DD2DD1CB844FA00DD3FB5 /* Build configuration list for PBXNativeTarget "DataManager OSX" */;
 			buildPhases = (
+				6EFD33771CCE6F07009AD145 /* SwiftLint */,
 				6E6DD2C71CB844FA00DD3FB5 /* Sources */,
 				6E6DD2C81CB844FA00DD3FB5 /* Frameworks */,
 				6E6DD2C91CB844FA00DD3FB5 /* Headers */,
@@ -319,6 +343,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E6DD2ED1CB845E900DD3FB5 /* Build configuration list for PBXNativeTarget "DataManager watchOS" */;
 			buildPhases = (
+				6EFD33791CCE6F35009AD145 /* SwiftLint */,
 				6E6DD2E31CB845E900DD3FB5 /* Sources */,
 				6E6DD2E41CB845E900DD3FB5 /* Frameworks */,
 				6E6DD2E51CB845E900DD3FB5 /* Headers */,
@@ -337,6 +362,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E6DD3061CB846C800DD3FB5 /* Build configuration list for PBXNativeTarget "DataManager tvOS" */;
 			buildPhases = (
+				6EFD33781CCE6F22009AD145 /* SwiftLint */,
 				6E6DD2F01CB846C700DD3FB5 /* Sources */,
 				6E6DD2F11CB846C700DD3FB5 /* Frameworks */,
 				6E6DD2F21CB846C700DD3FB5 /* Headers */,
@@ -476,6 +502,65 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6EFD33761CCE6EE7009AD145 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint autocorrect && swiftlint\nelse\n    cat << EOM\nerror: SwiftLint not installed.\n\nYou can install SwiftLint via Homebrew:\n\n$ brew update\n$ brew install swiftlint\n\nFor more information, visit https://github.com/realm/SwiftLint\nEOM\n    exit 1\nfi";
+		};
+		6EFD33771CCE6F07009AD145 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint autocorrect && swiftlint\nelse\n    cat << EOM\nerror: SwiftLint not installed.\n\nYou can install SwiftLint via Homebrew:\n\n$ brew update\n$ brew install swiftlint\n\nFor more information, visit https://github.com/realm/SwiftLint\nEOM\n    exit 1\nfi";
+		};
+		6EFD33781CCE6F22009AD145 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint autocorrect && swiftlint\nelse\n    cat << EOM\nerror: SwiftLint not installed.\n\nYou can install SwiftLint via Homebrew:\n\n$ brew update\n$ brew install swiftlint\n\nFor more information, visit https://github.com/realm/SwiftLint\nEOM\n    exit 1\nfi";
+		};
+		6EFD33791CCE6F35009AD145 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint autocorrect && swiftlint\nelse\n    cat << EOM\nerror: SwiftLint not installed.\n\nYou can install SwiftLint via Homebrew:\n\n$ brew update\n$ brew install swiftlint\n\nFor more information, visit https://github.com/realm/SwiftLint\nEOM\n    exit 1\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6E478FE31CAD8D81003F2AE1 /* Sources */ = {
