@@ -23,13 +23,13 @@ pod 'DataManager'
 
 ## Credits
 
-MetovaBase is owned and maintained by [Metova Inc.](https://metova.com)
+DataManager is owned and maintained by [Metova Inc.](https://metova.com)
 
-[Contributors](https://github.com/Metova/MetovaBase/graphs/contributors)
+[Contributors](https://github.com/Metova/DataManager/graphs/contributors)
 
 ## License
 
-DataManager is available under the MIT license. See the LICENSE file for more info.
+MetovaBase is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
 
 ## Alternatives
 

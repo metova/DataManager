@@ -1,0 +1,81 @@
+disabled_rules: # rule identifiers to exclude from running
+  - todo # This rule is handled by a separate build phase step.
+  - line_length
+  - trailing_whitespace
+  - statement_position
+  - opening_brace
+  - file_length # This rule counts white space and comments.  Re-enabled when we've fixed it to not do that.
+  - nesting
+opt_in_rules: # some rules are only opt-in
+  - empty_count
+  - force_unwrapping
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
+  - Vendor
+  - build
+
+# configurable rules can be customized from this configuration file
+# binary rules can set their severity level
+force_cast: error
+force_try: error
+force_unwrapping: error
+variable_name:
+  max_length:
+    warning: 55
+    error: 60
+  min_length:
+    error: 4
+  excluded:
+    - row
+    - key
+    - id
+    - url
+    - uri
+    - db
+    - bar
+    - red
+    - lhs
+    - rhs
+    - tag
+    - rs
+    - URI
+    - URL
+trailing_newline: error
+comma: error
+colon: error
+opening_brace: error
+empty_count: error
+legacy_constructor: error
+statement_position: error
+legacy_constant: error
+trailing_semicolon: error
+
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle)
+
+custom_rules:
+   comments_space:
+      name: "Space After Comment"
+      regex: "(^ *//\w+)"
+      message: "There should be a space after //"
+      severity: error
+   empty_first_line:
+      name: "Empty First Line"
+      regex: "(^[ a-zA-Z ]*(?:protocol|extension|class|struct) (?!(?:var|let))[ a-zA-Z:]*\{\n *\S+)"
+      message: "There should be an empty line after a declaration"
+      severity: error
+   empty_line_after_guard:
+      name: "Empty Line After Guard"
+      regex: "(^ *guard[ a-zA-Z0-9=?.\(\),><!]*\{[ a-zA-Z0-9=?.\(\),><!]*\}\n *(?!(?:return|guard))\S+)"
+      message: "There should be an empty line after a guard"
+      severity: error
+   empty_line_after_super:
+      name: "Empty Line After Super"
+      regex: "(^ *super\.[ a-zA-Z0-9=?.\(\)\{\}:,><!]*\n *(?!(?:\}|return))\S+)"
+      message: "There should be an empty line after super"
+      severity: error
+   multiple_empty_lines:
+      name: "Multiple Empty Lines"
+      regex: "((?:\s*\n){3,})"
+      message: "There are too many line breaks"
+      severity: error
