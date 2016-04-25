@@ -18,7 +18,7 @@ class DataManagerTests: XCTestCase {
     
         super.setUp()
         
-        DataManager.sharedInstance.setUpWithDataModelName("TestModel", dataModelBundle: NSBundle(forClass: DataManagerTests.self), persistentStoreName: "Test", persistentStoreType: .InMemory)
+        DataManager.setUpWithDataModelName("TestModel", dataModelBundle: NSBundle(forClass: DataManagerTests.self), persistentStoreName: "Test", persistentStoreType: .InMemory)
     }
     
     
@@ -26,7 +26,7 @@ class DataManagerTests: XCTestCase {
     override func tearDown() {
         
         do {
-            try DataManager.sharedInstance.deleteAllObjects()
+            try DataManager.deleteAllObjects()
         }
         catch let error as NSError {
             XCTFail("Failed to delete objects after running test: \(error.localizedDescription)")
@@ -41,7 +41,7 @@ class DataManagerTests: XCTestCase {
     
     func createTestPerson(name name: String = "Test Person", birthDate: NSDate = NSDate(timeIntervalSince1970: 0)) -> Person {
         
-        return Person(context: DataManager.sharedInstance.mainContext, name: name, birthDate: birthDate)
+        return Person(context: DataManager.mainContext, name: name, birthDate: birthDate)
     }
     
     
@@ -51,10 +51,10 @@ class DataManagerTests: XCTestCase {
     
     func testCreatingChildContext() {
         
-        let childContext = DataManager.sharedInstance.createChildContextWithParentContext(DataManager.sharedInstance.mainContext)
+        let childContext = DataManager.createChildContextWithParentContext(DataManager.mainContext)
         
         XCTAssertEqual(childContext.concurrencyType, NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
-        XCTAssertTrue(childContext.parentContext === DataManager.sharedInstance.mainContext)
+        XCTAssertTrue(childContext.parentContext === DataManager.mainContext)
     }
     
     
@@ -69,12 +69,12 @@ class DataManagerTests: XCTestCase {
         let ascendingSortDescriptor = NSSortDescriptor(key: "birthDate", ascending: true)
         let descendingSortDescriptor = NSSortDescriptor(key: "birthDate", ascending: false)
         
-        let olderPerson = DataManager.sharedInstance.fetchObject(entity: Person.self, sortDescriptors: [ascendingSortDescriptor], context: DataManager.sharedInstance.mainContext)
+        let olderPerson = DataManager.fetchObject(entity: Person.self, sortDescriptors: [ascendingSortDescriptor], context: DataManager.mainContext)
         
         XCTAssertNotNil(olderPerson, "Failed to fetch a single Person.")
         XCTAssertTrue(person1 === olderPerson, "Fetched incorrect Person.")
         
-        let youngerPerson = DataManager.sharedInstance.fetchObject(entity: Person.self, sortDescriptors: [descendingSortDescriptor], context: DataManager.sharedInstance.mainContext)
+        let youngerPerson = DataManager.fetchObject(entity: Person.self, sortDescriptors: [descendingSortDescriptor], context: DataManager.mainContext)
         
         XCTAssertNotNil(youngerPerson, "Failed to fetch a single Person.")
         XCTAssertTrue(person2 === youngerPerson, "Fetched incorrect Person.")
@@ -89,7 +89,7 @@ class DataManagerTests: XCTestCase {
         
         let predicate = NSPredicate(format: "name == %@", "Logan Gauthier")
         
-        let fetchedPerson = DataManager.sharedInstance.fetchObject(entity: Person.self, predicate: predicate, context: DataManager.sharedInstance.mainContext)
+        let fetchedPerson = DataManager.fetchObject(entity: Person.self, predicate: predicate, context: DataManager.mainContext)
         
         XCTAssertNotNil(fetchedPerson, "Failed to fetch a single Person.")
         XCTAssertTrue(person === fetchedPerson, "Fetched incorrect Person.")
@@ -104,7 +104,7 @@ class DataManagerTests: XCTestCase {
         let person1 = createTestPerson()
         let person2 = createTestPerson()
         
-        let fetchedPeople = DataManager.sharedInstance.fetchObjects(entity: Person.self, context: DataManager.sharedInstance.mainContext)
+        let fetchedPeople = DataManager.fetchObjects(entity: Person.self, context: DataManager.mainContext)
         
         XCTAssertEqual(fetchedPeople.count, 2)
         XCTAssertTrue(fetchedPeople.contains(person1))
@@ -121,7 +121,7 @@ class DataManagerTests: XCTestCase {
         
         let predicate = NSPredicate(format: "name == %@", "Test Person")
         
-        let fetchedPeople = DataManager.sharedInstance.fetchObjects(entity: Person.self, predicate: predicate, context: DataManager.sharedInstance.mainContext)
+        let fetchedPeople = DataManager.fetchObjects(entity: Person.self, predicate: predicate, context: DataManager.mainContext)
         
         XCTAssertEqual(fetchedPeople.count, 2)
         XCTAssertTrue(fetchedPeople.contains(person1))
@@ -138,13 +138,13 @@ class DataManagerTests: XCTestCase {
         let ascendingSortDescriptor = NSSortDescriptor(key: "birthDate", ascending: true)
         let descendingSortDescriptor = NSSortDescriptor(key: "birthDate", ascending: false)
         
-        let fetchedPeopleAscending = DataManager.sharedInstance.fetchObjects(entity: Person.self, sortDescriptors: [ascendingSortDescriptor], context: DataManager.sharedInstance.mainContext)
+        let fetchedPeopleAscending = DataManager.fetchObjects(entity: Person.self, sortDescriptors: [ascendingSortDescriptor], context: DataManager.mainContext)
         
         XCTAssertEqual(fetchedPeopleAscending.count, 2)
         XCTAssertTrue(fetchedPeopleAscending[0] === person1)
         XCTAssertTrue(fetchedPeopleAscending[1] === person2)
         
-        let fetchedPeopleDescending = DataManager.sharedInstance.fetchObjects(entity: Person.self, sortDescriptors: [descendingSortDescriptor], context: DataManager.sharedInstance.mainContext)
+        let fetchedPeopleDescending = DataManager.fetchObjects(entity: Person.self, sortDescriptors: [descendingSortDescriptor], context: DataManager.mainContext)
         
         XCTAssertEqual(fetchedPeopleDescending.count, 2)
         XCTAssertTrue(fetchedPeopleDescending[0] === person2)
@@ -160,7 +160,7 @@ class DataManagerTests: XCTestCase {
         let person1 = createTestPerson()
         let person2 = createTestPerson()
         
-        DataManager.sharedInstance.deleteObjects([person1, person2], context: DataManager.sharedInstance.mainContext)
+        DataManager.deleteObjects([person1, person2], context: DataManager.mainContext)
         
         XCTAssertTrue(person1.deleted)
         XCTAssertTrue(person2.deleted)
@@ -176,7 +176,7 @@ class DataManagerTests: XCTestCase {
         
         XCTAssertTrue(person1.managedObjectContext?.hasChanges == true)
         
-        DataManager.sharedInstance.persist(synchronously: false)
+        DataManager.persist(synchronously: false)
         
         XCTAssertTrue(person1.managedObjectContext?.hasChanges == false)
         XCTAssertTrue(person1.managedObjectContext?.parentContext?.hasChanges == true)
@@ -207,7 +207,7 @@ class DataManagerTests: XCTestCase {
         
         XCTAssertTrue(person1.managedObjectContext?.hasChanges == true)
         
-        DataManager.sharedInstance.persist(synchronously: true)
+        DataManager.persist(synchronously: true)
         
         XCTAssertTrue(person1.managedObjectContext?.hasChanges == false)
         XCTAssertTrue(person1.managedObjectContext?.parentContext?.hasChanges == false)
