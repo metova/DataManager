@@ -187,7 +187,6 @@ class DataManagerTests: XCTestCase {
         }
         
         XCTAssertTrue(person1.managedObjectContext?.hasChanges == false)
-        XCTAssertTrue(person1.managedObjectContext?.parentContext?.hasChanges == true)
         
         waitForExpectationsWithTimeout(5) { error in
             
