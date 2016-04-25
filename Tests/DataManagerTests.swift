@@ -175,9 +175,15 @@ class DataManagerTests: XCTestCase {
         
         DataManager.persist(synchronously: false) { error in
             
-            if let privateContext = person1.managedObjectContext?.parentContext where !privateContext.hasChanges && error == nil {
-                    expectation.fulfill()
+            defer { expectation.fulfill() }
+            
+            guard let privateContext = person1.managedObjectContext?.parentContext else {
+                XCTFail("Failed to obtain parent context from person.")
+                return
             }
+            
+            XCTAssertFalse(privateContext.hasChanges)
+            XCTAssertNil(error)
         }
         
         XCTAssertTrue(person1.managedObjectContext?.hasChanges == false)
