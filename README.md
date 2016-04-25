@@ -1,5 +1,6 @@
 # DataManager
 
+[![Build Status](https://travis-ci.org/metova/DataManager.svg)](https://travis-ci.org/metova/DataManager)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/DataManager.svg)](https://img.shields.io/cocoapods/v/DataManager.svg)
 [![Platform](https://img.shields.io/cocoapods/p/DataManager.svg?style=flat)](http://cocoadocs.org/docsets/DataManager)
 
