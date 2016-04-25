@@ -171,22 +171,19 @@ class DataManagerTests: XCTestCase {
         
         XCTAssertTrue(person1.managedObjectContext?.hasChanges == true)
         
-        DataManager.persist(synchronously: false)
+        let expectation = expectationWithDescription("Expect private context to save asynchronously.")
+        
+        DataManager.persist(synchronously: false) { error in
+            
+            if let privateContext = person1.managedObjectContext?.parentContext where !privateContext.hasChanges && error == nil {
+                    expectation.fulfill()
+            }
+        }
         
         XCTAssertTrue(person1.managedObjectContext?.hasChanges == false)
         XCTAssertTrue(person1.managedObjectContext?.parentContext?.hasChanges == true)
         
-        let expectation = expectationWithDescription("Expect private context to save asynchronously.")
-        
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
-            
-            if person1.managedObjectContext?.parentContext?.hasChanges == false {
-                expectation.fulfill()
-            }
-        }
-        
-        waitForExpectationsWithTimeout(2) { error in
+        waitForExpectationsWithTimeout(5) { error in
             
             if let error = error {
                 XCTFail("Private context failed to save. Expectation error: \(error.localizedDescription)")
