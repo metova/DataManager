@@ -21,6 +21,12 @@ DataManager is available through [CocoaPods](http://cocoapods.org). To install i
 pod 'DataManager'
 ```
 
+If you would like to test a beta version of DataManager, you can install the latest from develop:
+
+```ruby
+pod 'DataManager', :git => 'https://github.com/metova/DataManager.git', :branch => 'develop'
+```
+
 ## Setup
 
 When your app is launched, set up 'DataManager' with the data model name and a name for the persistent store file:
