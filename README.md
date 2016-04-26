@@ -5,6 +5,7 @@
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/DataManager.svg)](https://img.shields.io/cocoapods/v/DataManager.svg)
 [![Platform](https://img.shields.io/cocoapods/p/DataManager.svg?style=flat)](http://cocoadocs.org/docsets/DataManager)
 [![Documentation](https://img.shields.io/cocoapods/metrics/doc-percent/DataManager.svg)](http://cocoadocs.org/docsets/DataManager/)
+[![Coverage Status](https://coveralls.io/repos/github/metova/DataManager/badge.svg?branch=master)](https://coveralls.io/github/metova/DataManager?branch=master)
 
 DataManager is a lightweight Core Data utility written in Swift.
 
