@@ -44,7 +44,7 @@ public enum PersistentStoreType {
     case InMemory
     
     /// Value of the Core Data string constants corresponding to each case.
-    private var stringValue: String {
+    var stringValue: String {
         switch self {
         case .SQLite:
             return NSSQLiteStoreType
@@ -145,9 +145,9 @@ public final class DataManager {
         }
         
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: DataManager.managedObjectModel)
-        let url = DataManager.applicationDocumentsDirectory.URLByAppendingPathComponent("\(DataManager.persistentStoreName).sqlite")
+        let url = DataManager.applicationDocumentsDirectory.URLByAppendingPathComponent("\(persistentStoreName).sqlite")
         
-        let options: Dictionary? = [
+        let options = [
             NSMigratePersistentStoresAutomaticallyOption: true,
             NSInferMappingModelAutomaticallyOption: true
         ]
@@ -167,7 +167,7 @@ public final class DataManager {
     
     
     
-    private static var privateContext: NSManagedObjectContext = {
+    static var privateContext: NSManagedObjectContext = {
         
         let context = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
         context.persistentStoreCoordinator = DataManager.persistentStoreCoordinator
@@ -227,6 +227,7 @@ public final class DataManager {
             guard let results = try context.executeFetchRequest(request) as? [T] else {
                 fatalError("Attempting to fetch objects of an unknown entity (\(entity)).")
             }
+            
             return results
         }
         catch let error as NSError {
@@ -258,6 +259,7 @@ public final class DataManager {
             guard let results = try context.executeFetchRequest(request) as? [T] else {
                 fatalError("Attempting to fetch objects of an unknown entity (\(entity)).")
             }
+            
             return results.first
         }
         catch let error as NSError {

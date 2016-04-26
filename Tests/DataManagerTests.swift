@@ -41,6 +41,13 @@ class DataManagerTests: XCTestCase {
     
     
     
+    func createTestGroup(title title: String = "Test Group") -> Group {
+        
+        return Group(context: DataManager.mainContext, title: title)
+    }
+    
+    
+    
     // MARK: - Tests
     // MARK: Child Context Creation
     
@@ -88,6 +95,20 @@ class DataManagerTests: XCTestCase {
         
         XCTAssertNotNil(fetchedPerson, "Failed to fetch a single Person.")
         XCTAssertTrue(person === fetchedPerson, "Fetched incorrect Person.")
+    }
+    
+    
+    
+    func testFetchingSingleObjectsForThrownError() {
+        
+        executeTestWithErrorThrowingExecuteFetchRequestMock(contextToSwizzle: DataManager.mainContext) {
+            
+            _ = self.createTestPerson()
+            
+            let fetchedPerson = DataManager.fetchObject(entity: Person.self, context: DataManager.mainContext)
+            
+            XCTAssertNil(fetchedPerson, "When an error is thrown, it should be caught and nil should be returned.")
+        }
     }
     
     
@@ -148,6 +169,21 @@ class DataManagerTests: XCTestCase {
     
     
     
+    func testFetchingMultipleObjectsForThrownError() {
+        
+        executeTestWithErrorThrowingExecuteFetchRequestMock(contextToSwizzle: DataManager.mainContext) {
+            
+            _ = self.createTestPerson()
+            _ = self.createTestPerson()
+            
+            let fetchedPeople = DataManager.fetchObjects(entity: Person.self, context: DataManager.mainContext)
+            
+            XCTAssertEqual(fetchedPeople.count, 0, "When an error is thrown, it should be caught and an empty array should be returned.")
+        }
+    }
+    
+    
+    
     // MARK: Deleting
     
     func testDeletingObjects() {
@@ -155,10 +191,29 @@ class DataManagerTests: XCTestCase {
         let person1 = createTestPerson()
         let person2 = createTestPerson()
         
+        DataManager.persist(synchronously: true)
         DataManager.deleteObjects([person1, person2], context: DataManager.mainContext)
         
         XCTAssertTrue(person1.deleted)
         XCTAssertTrue(person2.deleted)
+    }
+    
+    
+    
+    func testDeletingAllObjects() {
+        
+        let person1 = createTestPerson()
+        let person2 = createTestPerson()
+        let group1 = createTestGroup()
+        let group2 = createTestGroup()
+        
+        DataManager.persist(synchronously: true)
+        DataManager.deleteAllObjects()
+        
+        XCTAssertTrue(person1.deleted)
+        XCTAssertTrue(person2.deleted)
+        XCTAssertTrue(group1.deleted)
+        XCTAssertTrue(group2.deleted)
     }
     
     
@@ -208,5 +263,23 @@ class DataManagerTests: XCTestCase {
         
         XCTAssertTrue(person1.managedObjectContext?.hasChanges == false)
         XCTAssertTrue(person1.managedObjectContext?.parentContext?.hasChanges == false)
+    }
+    
+    
+    
+    func testSavingForThrownError() {
+        
+        func assertErrorIsProvidedInCompletionClosure() {
+            
+            _ = createTestPerson()
+            
+            DataManager.persist(synchronously: true) { error in
+                
+                XCTAssertNotNil(error, "When executeFetchRequest(_:) throws an error, it should be passed in the completion closure.")
+            }
+        }
+        
+        executeTestWithErrorThrowingSaveMock(contextToSwizzle: DataManager.mainContext, test: assertErrorIsProvidedInCompletionClosure)
+        executeTestWithErrorThrowingSaveMock(contextToSwizzle: DataManager.privateContext, test: assertErrorIsProvidedInCompletionClosure)
     }
 }
