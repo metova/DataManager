@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "BC50F10C09131FA7C1968BC4121809B370907B20",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CD22FC54F4745ABAEE53320B6E5709DBAC241BD3" : 0,
+    "BC50F10C09131FA7C1968BC4121809B370907B20" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C8E10F7B-8915-49F0-B815-00C575F0EB48",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CD22FC54F4745ABAEE53320B6E5709DBAC241BD3" : "",
+    "BC50F10C09131FA7C1968BC4121809B370907B20" : "DataManager\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DataManager",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DataManager.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/metova\/DataManager.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BC50F10C09131FA7C1968BC4121809B370907B20"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/metova\/bookgrabbr-web.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CD22FC54F4745ABAEE53320B6E5709DBAC241BD3"
+    }
+  ]
+}

@@ -16,3 +16,7 @@ xcuserdata/
 
 # SPM
 .build/
+
+# Slather
+bin/
+html/

@@ -1,5 +1,10 @@
 # DataManager CHANGELOG
 
+## 0.1.4
+
+- Added Slather code coverage reporting through Coveralls.io.
+- Added tests to cover error scenarios.
+
 ## 0.1.3
 
 - Added documentation to cover all public API.
