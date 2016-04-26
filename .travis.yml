@@ -40,4 +40,5 @@ script:
       pod lib lint;
     fi
 after_success:
- - slather
+ - bundle binstub slather
+ - bin/slather
