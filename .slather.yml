@@ -1,0 +1,5 @@
+coverage_service: coveralls
+xcodeproj: DataManager.xcodeproj
+scheme: DataManager\ iOS
+ignore:
+# No ignores for now
