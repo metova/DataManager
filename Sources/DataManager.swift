@@ -31,13 +31,20 @@ import CoreData
 
 // MARK: - PersistentStoreType
 
+/// An enumeration of the three string constants that are used for specifying the persistent store type (NSSQLiteStoreType, NSBinaryStoreType, NSInMemoryStoreType).
 public enum PersistentStoreType {
     
+    /// Represents the value for NSSQLiteStoreType.
     case SQLite
+    
+    /// Represents the value for NSBinaryStoreType.
     case Binary
+    
+    /// Represents the value for NSInMemoryStoreType.
     case InMemory
     
-    var stringValue: String {
+    /// Value of the Core Data string constants corresponding to each case.
+    private var stringValue: String {
         switch self {
         case .SQLite:
             return NSSQLiteStoreType
@@ -62,16 +69,22 @@ private struct Constants {
 
 // MARK: - DataManager
 
+/**
+ Responsible for setting up the Core Data stack. Also provides some convenience methods for fetching, deleting, and saving.
+ */
 public final class DataManager {
     
     // MARK: Properties
     
-    static var dataModelName: String?
-    static var dataModelBundle: NSBundle?
-    static var persistentStoreName: String?
-    static var persistentStoreType = PersistentStoreType.SQLite
+    private static var dataModelName: String?
+    private static var dataModelBundle: NSBundle?
+    private static var persistentStoreName: String?
+    private static var persistentStoreType = PersistentStoreType.SQLite
     
+    /// The value to use for `fetchBatchSize` when fetching objects.
     public static var defaultFetchBatchSize = 50
+    
+    /// When set to `true`, DataManager does not emit any logs to the console.
     public static var shouldSuppressLogs = false
     
     
@@ -163,7 +176,7 @@ public final class DataManager {
     
     
     
-        /// A MainQueueConcurrencyType context whose parent is a PrivateQueueConcurrencyType context. The PrivateQueueConcurrencyType context is the root context.
+    /// A MainQueueConcurrencyType context whose parent is a PrivateQueueConcurrencyType context. The PrivateQueueConcurrencyType context is the root context.
     public static var mainContext: NSManagedObjectContext = {
         
         let context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
