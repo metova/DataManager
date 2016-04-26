@@ -42,7 +42,7 @@ DataManager is owned and maintained by [Metova Inc.](https://metova.com)
 
 ## License
 
-MetovaBase is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
+DataManager is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
 
 ## Alternatives
 
