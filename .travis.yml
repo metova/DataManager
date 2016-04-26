@@ -20,6 +20,9 @@ env:
     - DESTINATION="OS=2.2,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO"  POD_LINT="NO"
 before_install:
   - brew install swiftlint
+  - rvm use $RVM_RUBY_VERSION
+install:
+  - bundle install --without=documentation --path ../travis_bundle_dir
 script:
   - set -o pipefail
   - xcodebuild -version
@@ -36,3 +39,6 @@ script:
   - if [ $POD_LINT == "YES" ]; then
       pod lib lint;
     fi
+after_success:
+ - bundle binstub slather
+ - bin/slather
