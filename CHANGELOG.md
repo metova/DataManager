@@ -1,5 +1,9 @@
 # DataManager CHANGELOG
 
+## 0.2.1
+
+- Added missing documentation for the public logger API.
+
 ## 0.2.0
 
 - Added instructions for installing develop branch.

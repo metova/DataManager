@@ -60,8 +60,19 @@ public enum PersistentStoreType {
 
 // MARK: - Logger
 
+/**
+ *  Defines requirements for a logger that DataManager can use to log errors.
+ */
 public protocol DataManagerErrorLogger {
     
+    /**
+     This method is called when DataManager catches a thrown error internally. Custom loggers may have this method print to the console or write to a file.
+     
+     - parameter error:    The error that was thrown.
+     - parameter file:     The file from which the error logging method was called from.
+     - parameter function: The function from which the error logging method was called from.
+     - parameter line:     The line number in the file from which the error logging method was called from.
+     */
     func logError(error: NSError, file: StaticString, function: StaticString, line: UInt)
 }
 
