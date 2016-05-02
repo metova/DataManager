@@ -80,30 +80,11 @@ extension NSManagedObjectContext {
         
         dispatch_once(&Static.token) { 
             
-            swizzle(originalSelector: #selector(executeFetchRequest(_:)), swizzledSelector: #selector(dataManagerTestExecuteFetchRequest(_:)))
-            swizzle(originalSelector: #selector(save), swizzledSelector: #selector(dataManagerTestSave))
+            swizzle(originalSelector: #selector(executeFetchRequest(_:)), swizzledSelector: #selector(dataManagerTestExecuteFetchRequest(_:)), forClass: self)
+            swizzle(originalSelector: #selector(save), swizzledSelector: #selector(dataManagerTestSave), forClass: self)
         }
     }
-    
-    
-    
-    // MARK: Helper
-    
-    private static func swizzle(originalSelector originalSelector: Selector, swizzledSelector: Selector) {
-        
-        let originalMethod = class_getInstanceMethod(self, originalSelector)
-        let swizzledMethod = class_getInstanceMethod(self, swizzledSelector)
-        
-        let didAddMethod = class_addMethod(self, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))
-        
-        if didAddMethod {
-            class_replaceMethod(self, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
-        }
-        else {
-            method_exchangeImplementations(originalMethod, swizzledMethod)
-        }
-    }
-    
+
     
     
     // MARK: Swizzled Methods

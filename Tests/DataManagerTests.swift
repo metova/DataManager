@@ -113,6 +113,20 @@ class DataManagerTests: XCTestCase {
     
     
     
+    func testErrorsAreLoggedWhenFetchingSingleObject() {
+        
+        executeTestWithErrorThrowingExecuteFetchRequestMock(contextToSwizzle: DataManager.mainContext) {
+            
+            let didLogError = self.isLogMethodExecutedInClosure {
+                _ = DataManager.fetchObject(entity: Person.self, context: DataManager.mainContext)
+            }
+            
+            XCTAssertTrue(didLogError, "Errors caught internally should be logged.")
+        }
+    }
+    
+    
+    
     // MARK: Fetch Multiple Objects
     
     func testFetchingMultipleObjects() {
@@ -184,6 +198,20 @@ class DataManagerTests: XCTestCase {
     
     
     
+    func testErrorsAreLoggedWhenFetchingMultipleObjects() {
+        
+        executeTestWithErrorThrowingExecuteFetchRequestMock(contextToSwizzle: DataManager.mainContext) {
+            
+            let didLogError = self.isLogMethodExecutedInClosure {
+                _ = DataManager.fetchObjects(entity: Person.self, context: DataManager.mainContext)
+            }
+            
+            XCTAssertTrue(didLogError, "Errors caught internally should be logged.")
+        }
+    }
+    
+    
+    
     // MARK: Deleting
     
     func testDeletingObjects() {
@@ -214,6 +242,20 @@ class DataManagerTests: XCTestCase {
         XCTAssertTrue(person2.deleted)
         XCTAssertTrue(group1.deleted)
         XCTAssertTrue(group2.deleted)
+    }
+    
+    
+    
+    func testErrorsAreLoggedWhenDeleting() {
+        
+        executeTestWithErrorThrowingExecuteFetchRequestMock(contextToSwizzle: DataManager.mainContext) { 
+        
+            let didLogError = self.isLogMethodExecutedInClosure {
+                DataManager.deleteAllObjects()
+            }
+            
+            XCTAssertTrue(didLogError, "Errors caught internally should be logged.")
+        }
     }
     
     

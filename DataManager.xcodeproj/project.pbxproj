@@ -27,6 +27,12 @@
 		6E6DD2FF1CB846C800DD3FB5 /* DataManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E6DD2F51CB846C700DD3FB5 /* DataManager.framework */; };
 		6E6DD30E1CB85E0F00DD3FB5 /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E478FF71CAD8D81003F2AE1 /* DataManagerTests.swift */; };
 		6E6DD30F1CB85E1100DD3FB5 /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E478FF71CAD8D81003F2AE1 /* DataManagerTests.swift */; };
+		6EA68ADF1CD7D1EC00D113FA /* MethodSwizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA68ADE1CD7D1EC00D113FA /* MethodSwizzling.swift */; };
+		6EA68AE01CD7D1EC00D113FA /* MethodSwizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA68ADE1CD7D1EC00D113FA /* MethodSwizzling.swift */; };
+		6EA68AE11CD7D1EC00D113FA /* MethodSwizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA68ADE1CD7D1EC00D113FA /* MethodSwizzling.swift */; };
+		6EA68AE31CD7D3DC00D113FA /* XCTestCase+MockLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA68AE21CD7D3DC00D113FA /* XCTestCase+MockLogger.swift */; };
+		6EA68AE41CD7D3DC00D113FA /* XCTestCase+MockLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA68AE21CD7D3DC00D113FA /* XCTestCase+MockLogger.swift */; };
+		6EA68AE51CD7D3DC00D113FA /* XCTestCase+MockLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA68AE21CD7D3DC00D113FA /* XCTestCase+MockLogger.swift */; };
 		6EFD334C1CC931E4009AD145 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4790021CAD8DBF003F2AE1 /* DataManager.swift */; };
 		6EFD334D1CC931E5009AD145 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4790021CAD8DBF003F2AE1 /* DataManager.swift */; };
 		6EFD334E1CC931E7009AD145 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4790021CAD8DBF003F2AE1 /* DataManager.swift */; };
@@ -85,6 +91,8 @@
 		6E6DD2F91CB846C700DD3FB5 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		6E6DD2FE1CB846C800DD3FB5 /* DataManager tvOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DataManager tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E6DD3051CB846C800DD3FB5 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
+		6EA68ADE1CD7D1EC00D113FA /* MethodSwizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodSwizzling.swift; sourceTree = "<group>"; };
+		6EA68AE21CD7D3DC00D113FA /* XCTestCase+MockLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MockLogger.swift"; sourceTree = "<group>"; };
 		6EFD33511CC935DA009AD145 /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
 		6EFD33591CC93770009AD145 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6EFD335A1CC93770009AD145 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -157,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				6E08D2031CCFF75200426439 /* NSManagedObjectContext+TestSwizzle.swift */,
+				6EA68ADE1CD7D1EC00D113FA /* MethodSwizzling.swift */,
+				6EA68AE21CD7D3DC00D113FA /* XCTestCase+MockLogger.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -606,11 +616,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E08D1FF1CCFF2B900426439 /* PersistentStoreTypeTests.swift in Sources */,
+				6EA68ADF1CD7D1EC00D113FA /* MethodSwizzling.swift in Sources */,
 				6E478FF81CAD8D81003F2AE1 /* DataManagerTests.swift in Sources */,
 				6EFD33561CC93622009AD145 /* TestModel.xcdatamodeld in Sources */,
 				6E08D20C1CCFFDF300426439 /* Group.swift in Sources */,
 				6EFD33601CC93770009AD145 /* Person.swift in Sources */,
 				6E08D2041CCFF75200426439 /* NSManagedObjectContext+TestSwizzle.swift in Sources */,
+				6EA68AE31CD7D3DC00D113FA /* XCTestCase+MockLogger.swift in Sources */,
 				6EFD335D1CC93770009AD145 /* Person+CoreDataProperties.swift in Sources */,
 				6E08D2091CCFFDF300426439 /* Group+CoreDataProperties.swift in Sources */,
 			);
@@ -629,11 +641,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E08D2001CCFF2B900426439 /* PersistentStoreTypeTests.swift in Sources */,
+				6EA68AE01CD7D1EC00D113FA /* MethodSwizzling.swift in Sources */,
 				6E6DD30E1CB85E0F00DD3FB5 /* DataManagerTests.swift in Sources */,
 				6EFD33571CC93624009AD145 /* TestModel.xcdatamodeld in Sources */,
 				6E08D20D1CCFFDF300426439 /* Group.swift in Sources */,
 				6EFD33611CC93770009AD145 /* Person.swift in Sources */,
 				6E08D2051CCFF75200426439 /* NSManagedObjectContext+TestSwizzle.swift in Sources */,
+				6EA68AE41CD7D3DC00D113FA /* XCTestCase+MockLogger.swift in Sources */,
 				6EFD335E1CC93770009AD145 /* Person+CoreDataProperties.swift in Sources */,
 				6E08D20A1CCFFDF300426439 /* Group+CoreDataProperties.swift in Sources */,
 			);
@@ -660,11 +674,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E08D2011CCFF2B900426439 /* PersistentStoreTypeTests.swift in Sources */,
+				6EA68AE11CD7D1EC00D113FA /* MethodSwizzling.swift in Sources */,
 				6E6DD30F1CB85E1100DD3FB5 /* DataManagerTests.swift in Sources */,
 				6EFD33581CC93625009AD145 /* TestModel.xcdatamodeld in Sources */,
 				6E08D20E1CCFFDF300426439 /* Group.swift in Sources */,
 				6EFD33621CC93770009AD145 /* Person.swift in Sources */,
 				6E08D2061CCFF75200426439 /* NSManagedObjectContext+TestSwizzle.swift in Sources */,
+				6EA68AE51CD7D3DC00D113FA /* XCTestCase+MockLogger.swift in Sources */,
 				6EFD335F1CC93770009AD145 /* Person+CoreDataProperties.swift in Sources */,
 				6E08D20B1CCFFDF300426439 /* Group+CoreDataProperties.swift in Sources */,
 			);

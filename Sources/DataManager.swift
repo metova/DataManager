@@ -58,6 +58,27 @@ public enum PersistentStoreType {
 
 
 
+// MARK: - Logger
+
+public protocol DataManagerErrorLogger {
+    
+    func logError(error: NSError, file: StaticString, function: StaticString, line: UInt)
+}
+
+
+
+// MARK: - DefaultLogger
+
+private class DefaultLogger: DataManagerErrorLogger {
+    
+    func logError(error: NSError, file: StaticString, function: StaticString, line: UInt) {
+        
+        print("[DataManager - \(function) line \(line)] Error: \(error.localizedDescription)")
+    }
+}
+
+
+
 // MARK: - Constants
 
 private struct Constants {
@@ -81,11 +102,11 @@ public final class DataManager {
     private static var persistentStoreName: String?
     private static var persistentStoreType = PersistentStoreType.SQLite
     
+    /// The logger to use for logging errors caught internally. A default logger is used if a custom one isn't provided. Assigning nil to this property prevents DataManager from emitting any logs to the console.
+    public static var errorLogger: DataManagerErrorLogger? = DefaultLogger()
+    
     /// The value to use for `fetchBatchSize` when fetching objects.
     public static var defaultFetchBatchSize = 50
-    
-    /// When set to `true`, DataManager does not emit any logs to the console.
-    public static var shouldSuppressLogs = false
     
     
     
@@ -99,10 +120,10 @@ public final class DataManager {
      - parameter persistentStoreName: The name of the persistent store.
      - parameter persistentStoreType: The persistent store type. Defaults to SQLite.
      */
-    public static func setUpWithDataModelName(dataModelName: String, dataModelBundle: NSBundle? = nil, persistentStoreName: String, persistentStoreType: PersistentStoreType = .SQLite) {
+    public static func setUpWithDataModelName(dataModelName: String, dataModelBundle: NSBundle, persistentStoreName: String, persistentStoreType: PersistentStoreType = .SQLite) {
         
         DataManager.dataModelName = dataModelName
-        DataManager.dataModelBundle = dataModelBundle ?? NSBundle.mainBundle()
+        DataManager.dataModelBundle = dataModelBundle
         DataManager.persistentStoreName = persistentStoreName
         DataManager.persistentStoreType = persistentStoreType
     }
@@ -120,7 +141,7 @@ public final class DataManager {
     
     
     private static var managedObjectModel: NSManagedObjectModel = {
-        
+
         guard let dataModelName = DataManager.dataModelName else {
             fatalError("Attempting to use nil data model name. \(Constants.mustCallSetupMethodErrorMessage)")
         }
@@ -366,10 +387,8 @@ public final class DataManager {
     
     // MARK: Logging
     
-    private static func logError(error: NSError, function: StaticString = #function, line: UInt = #line) {
+    private static func logError(error: NSError, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
         
-        if !shouldSuppressLogs {
-            print("[DataManager - \(function) line \(line)] Error: \(error.localizedDescription)")
-        }
+        errorLogger?.logError(error, file: file, function: function, line: line)
     }
 }
