@@ -1,5 +1,10 @@
 # DataManager CHANGELOG
 
+## 0.2.0
+
+- Added instructions for installing develop branch.
+- Added ability to provide a custom error logger for internally caught errors.
+
 ## 0.1.4
 
 - Added Slather code coverage reporting through Coveralls.io.
