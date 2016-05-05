@@ -33,7 +33,7 @@ pod 'DataManager', :git => 'https://github.com/metova/DataManager.git', :branch 
 
 ## Usage
 
-### Setup
+#### Setup
 
 When your app is launched, set up `DataManager` with the data model name and a name for the persistent store file:
 ```swift
@@ -49,7 +49,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 
 This won't set up the Core Data stack right away. The stack is lazy loaded when `DataManager.mainContext` is first used.
 
-### Fetching
+#### Fetching
 
 DataManager uses generics so you don't have to worry about casting the `NSManagedObject` results to the entity's class every time you perform a fetch. For example, the type of `olderUsers` below is `[User]`.
 
@@ -58,19 +58,19 @@ let predicate = NSPredicate(format: "birthDate > %@", someDate)
 let olderUsers = DataManager.fetchObjects(entity: User.self, predicate: predicate, context: DataManager.mainContext)
 ```
 
-### Deleting
+#### Deleting
 
 ```swift
 DataManager.deleteObjects([user1, user2], context: DataManager.mainContext)
 ```
 
-### Saving
+#### Saving
 
 ```swift
 DataManager.persist(synchronously: false)
 ```
 
-### Child Contexts
+#### Child Contexts
 
 ```swift
 let backgroundContext = DataManager.createChildContextWithParentContext(DataManager.mainContext)
