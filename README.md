@@ -7,7 +7,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/DataManager.svg?style=flat)](http://cocoadocs.org/docsets/DataManager)
 [![Twitter](https://img.shields.io/badge/twitter-@Metova-3CAC84.svg)](http://twitter.com/metova)
 
-DataManager is a lightweight Core Data utility. It is not a replacement/wrapper for Core Data. Here's are some of the highlights:
+DataManager is a lightweight Core Data utility. It is not a replacement/wrapper for Core Data. Here are some of the highlights:
 
 - Encapsulates the boilerplate associated with setting up the Core Data stack.
 - Sets up the stack with a private `NSPrivateQueueConcurrencyType` context as the root context with a public `NSMainQueueConcurrencyType` child context. This setup allows for asynchronous saves to disk.
