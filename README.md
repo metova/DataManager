@@ -54,7 +54,7 @@ This won't set up the Core Data stack right away. The stack is lazy loaded when 
 DataManager uses generics so you don't have to worry about casting the `NSManagedObject` results to the entity's class every time you perform a fetch. For example, the type of `olderUsers` below is `[User]`.
 
 ```swift
-let predicate = NSPredicate(format: "birthDate > %@", someDate)
+let predicate = NSPredicate(format: "birthDate < %@", someDate)
 let olderUsers = DataManager.fetchObjects(entity: User.self, predicate: predicate, context: DataManager.mainContext)
 ```
 
