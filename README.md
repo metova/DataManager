@@ -32,6 +32,9 @@ pod 'DataManager', :git => 'https://github.com/metova/DataManager.git', :branch 
 ```
 
 ## Swift 3
+[![Build Status](https://travis-ci.org/metova/DataManager.svg)](https://travis-ci.org/metova/DataManager.svg?branch=swift-3)
+[![Coverage Status](https://coveralls.io/repos/github/metova/DataManager/badge.svg?branch=master)](https://coveralls.io/github/metova/DataManager?branch=swift-3)
+
 
 If you are using Swift 3:
 
