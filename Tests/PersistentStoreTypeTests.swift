@@ -17,8 +17,8 @@ class PersistentStoreTypeTests: XCTestCase {
     
     func testPersistentStoreTypeStringValues() {
         
-        XCTAssertEqual(PersistentStoreType.SQLite.stringValue, NSSQLiteStoreType)
-        XCTAssertEqual(PersistentStoreType.Binary.stringValue, NSBinaryStoreType)
-        XCTAssertEqual(PersistentStoreType.InMemory.stringValue, NSInMemoryStoreType)
+        XCTAssertEqual(PersistentStoreType.sqLite.stringValue, NSSQLiteStoreType)
+        XCTAssertEqual(PersistentStoreType.binary.stringValue, NSBinaryStoreType)
+        XCTAssertEqual(PersistentStoreType.inMemory.stringValue, NSInMemoryStoreType)
     }
 }

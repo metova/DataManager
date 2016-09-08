@@ -14,21 +14,21 @@ class Person: NSManagedObject {
 
     // MARK: Initialization
     
-    convenience init(context: NSManagedObjectContext, name: String, birthDate: NSDate) {
+    convenience init(context: NSManagedObjectContext, name: String, birthDate: Date) {
         
-        guard let entity = NSEntityDescription.entityForName(String(Person), inManagedObjectContext: context) else {
+        guard let entity = NSEntityDescription.entity(forEntityName: String(describing: Person.self), in: context) else {
             
-            fatalError("Unable to get entity named \(String(Person))")
+            fatalError("Unable to get entity named \(String(describing: Person.self))")
         }
         
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         self.name = name
         self.birthDate = birthDate
     }
     
     
     
-    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
     }
 }

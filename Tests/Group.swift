@@ -16,18 +16,18 @@ class Group: NSManagedObject {
     
     convenience init(context: NSManagedObjectContext, title: String) {
         
-        guard let entity = NSEntityDescription.entityForName(String(Group), inManagedObjectContext: context) else {
+        guard let entity = NSEntityDescription.entity(forEntityName: String(describing: Group.self), in: context) else {
             
-            fatalError("Unable to get entity named \(String(Group))")
+            fatalError("Unable to get entity named \(String(describing: Group.self))")
         }
         
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         self.title = title
     }
     
     
     
-    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
     }
 }

@@ -35,22 +35,22 @@ import CoreData
 public enum PersistentStoreType {
     
     /// Represents the value for NSSQLiteStoreType.
-    case SQLite
+    case sqLite
     
     /// Represents the value for NSBinaryStoreType.
-    case Binary
+    case binary
     
     /// Represents the value for NSInMemoryStoreType.
-    case InMemory
+    case inMemory
     
     /// Value of the Core Data string constants corresponding to each case.
     var stringValue: String {
         switch self {
-        case .SQLite:
+        case .sqLite:
             return NSSQLiteStoreType
-        case .Binary:
+        case .binary:
             return NSBinaryStoreType
-        case .InMemory:
+        case .inMemory:
             return NSInMemoryStoreType
         }
     }
@@ -73,7 +73,7 @@ public protocol DataManagerErrorLogger {
      - parameter function: The function from which the error logging method was called from.
      - parameter line:     The line number in the file from which the error logging method was called from.
      */
-    func logError(error: NSError, file: StaticString, function: StaticString, line: UInt)
+    func logError(_ error: NSError, file: StaticString, function: StaticString, line: UInt)
 }
 
 
@@ -82,7 +82,7 @@ public protocol DataManagerErrorLogger {
 
 private class DefaultLogger: DataManagerErrorLogger {
     
-    func logError(error: NSError, file: StaticString, function: StaticString, line: UInt) {
+    func logError(_ error: NSError, file: StaticString, function: StaticString, line: UInt) {
         
         print("[DataManager - \(function) line \(line)] Error: \(error.localizedDescription)")
     }
@@ -94,7 +94,7 @@ private class DefaultLogger: DataManagerErrorLogger {
 
 private struct Constants {
     
-    static private let mustCallSetupMethodErrorMessage = "DataManager must be set up using setUpWithDataModelName(_:persistentStoreType:) before it can be used."
+    static fileprivate let mustCallSetupMethodErrorMessage = "DataManager must be set up using setUpWithDataModelName(_:persistentStoreType:) before it can be used."
 }
 
 
@@ -108,10 +108,10 @@ public final class DataManager {
     
     // MARK: Properties
     
-    private static var dataModelName: String?
-    private static var dataModelBundle: NSBundle?
-    private static var persistentStoreName: String?
-    private static var persistentStoreType = PersistentStoreType.SQLite
+    fileprivate static var dataModelName: String?
+    fileprivate static var dataModelBundle: Bundle?
+    fileprivate static var persistentStoreName: String?
+    fileprivate static var persistentStoreType = PersistentStoreType.sqLite
     
     /// The logger to use for logging errors caught internally. A default logger is used if a custom one isn't provided. Assigning nil to this property prevents DataManager from emitting any logs to the console.
     public static var errorLogger: DataManagerErrorLogger? = DefaultLogger()
@@ -131,7 +131,7 @@ public final class DataManager {
      - parameter persistentStoreName: The name of the persistent store.
      - parameter persistentStoreType: The persistent store type. Defaults to SQLite.
      */
-    public static func setUpWithDataModelName(dataModelName: String, dataModelBundle: NSBundle, persistentStoreName: String, persistentStoreType: PersistentStoreType = .SQLite) {
+    public static func setUpWithDataModelName(_ dataModelName: String, dataModelBundle: Bundle, persistentStoreName: String, persistentStoreType: PersistentStoreType = .sqLite) {
         
         DataManager.dataModelName = dataModelName
         DataManager.dataModelBundle = dataModelBundle
@@ -143,25 +143,25 @@ public final class DataManager {
     
     // MARK: Core Data Stack
     
-    private static var applicationDocumentsDirectory: NSURL = {
+    fileprivate static var applicationDocumentsDirectory: URL = {
         
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return urls[urls.count - 1]
     }()
     
     
     
-    private static var managedObjectModel: NSManagedObjectModel = {
+    fileprivate static var managedObjectModel: NSManagedObjectModel = {
 
         guard let dataModelName = DataManager.dataModelName else {
             fatalError("Attempting to use nil data model name. \(Constants.mustCallSetupMethodErrorMessage)")
         }
         
-        guard let modelURL = DataManager.dataModelBundle?.URLForResource(DataManager.dataModelName, withExtension: "momd") else {
+        guard let modelURL = DataManager.dataModelBundle?.url(forResource: DataManager.dataModelName, withExtension: "momd") else {
             fatalError("Failed to locate data model schema file.")
         }
         
-        guard let managedObjectModel = NSManagedObjectModel(contentsOfURL: modelURL) else {
+        guard let managedObjectModel = NSManagedObjectModel(contentsOf: modelURL) else {
             fatalError("Failed to created managed object model")
         }
         
@@ -170,14 +170,14 @@ public final class DataManager {
     
     
     
-    private static var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
+    fileprivate static var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         
         guard let persistentStoreName = DataManager.persistentStoreName else {
             fatalError("Attempting to use nil persistent store name. \(Constants.mustCallSetupMethodErrorMessage)")
         }
         
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: DataManager.managedObjectModel)
-        let url = DataManager.applicationDocumentsDirectory.URLByAppendingPathComponent("\(persistentStoreName).sqlite")
+        let url = DataManager.applicationDocumentsDirectory.appendingPathComponent("\(persistentStoreName).sqlite")
         
         let options = [
             NSMigratePersistentStoresAutomaticallyOption: true,
@@ -185,7 +185,7 @@ public final class DataManager {
         ]
         
         do {
-            try coordinator.addPersistentStoreWithType(DataManager.persistentStoreType.stringValue, configuration: nil, URL: url, options: options)
+            try coordinator.addPersistentStore(ofType: DataManager.persistentStoreType.stringValue, configurationName: nil, at: url, options: options)
         }
         catch let error as NSError {
             fatalError("Failed to initialize the application's persistent data: \(error.localizedDescription)")
@@ -201,7 +201,7 @@ public final class DataManager {
     
     static var privateContext: NSManagedObjectContext = {
         
-        let context = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
+        let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         context.persistentStoreCoordinator = DataManager.persistentStoreCoordinator
         return context
     }()
@@ -211,8 +211,8 @@ public final class DataManager {
     /// A MainQueueConcurrencyType context whose parent is a PrivateQueueConcurrencyType context. The PrivateQueueConcurrencyType context is the root context.
     public static var mainContext: NSManagedObjectContext = {
         
-        let context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-        context.parentContext = DataManager.privateContext
+        let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        context.parent = DataManager.privateContext
         return context
     }()
     
@@ -227,10 +227,10 @@ public final class DataManager {
      
      - returns: A private queue concurrency type context that is the child of the specified parent context.
      */
-    public static func createChildContextWithParentContext(parentContext: NSManagedObjectContext) -> NSManagedObjectContext {
+    public static func createChildContextWithParentContext(_ parentContext: NSManagedObjectContext) -> NSManagedObjectContext {
         
-        let managedObjectContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
-        managedObjectContext.parentContext = parentContext
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        managedObjectContext.parent = parentContext
         return managedObjectContext
     }
     
@@ -248,15 +248,15 @@ public final class DataManager {
      
      - returns: A typed array containing the results. If executeFetchRequest throws an error, an empty array is returned.
      */
-    public static func fetchObjects<T: NSManagedObject>(entity entity: T.Type, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, context: NSManagedObjectContext) -> [T] {
+    public static func fetchObjects<T: NSManagedObject>(entity: T.Type, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, context: NSManagedObjectContext) -> [T] {
         
-        let request = NSFetchRequest(entityName: String(entity))
+        let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: String(describing: entity))
         request.predicate = predicate
         request.sortDescriptors = sortDescriptors
         request.fetchBatchSize = defaultFetchBatchSize
         
         do {
-            guard let results = try context.executeFetchRequest(request) as? [T] else {
+            guard let results = try context.fetch(request) as? [T] else {
                 fatalError("Attempting to fetch objects of an unknown entity (\(entity)).")
             }
             
@@ -280,15 +280,16 @@ public final class DataManager {
      
      - returns: A typed result if found. If executeFetchRequest throws an error, nil is returned.
      */
-    public static func fetchObject<T: NSManagedObject>(entity entity: T.Type, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, context: NSManagedObjectContext) -> T? {
+    public static func fetchObject<T: NSManagedObject>(entity: T.Type, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, context: NSManagedObjectContext) -> T? {
         
-        let request = NSFetchRequest(entityName: String(entity))
+        let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: String(describing: entity))
+        
         request.predicate = predicate
         request.sortDescriptors = sortDescriptors
         request.fetchLimit = 1
         
         do {
-            guard let results = try context.executeFetchRequest(request) as? [T] else {
+            guard let results = try context.fetch(request) as? [T] else {
                 fatalError("Attempting to fetch objects of an unknown entity (\(entity)).")
             }
             
@@ -310,10 +311,10 @@ public final class DataManager {
      - parameter objects: The objects to delete.
      - parameter context: The context to perform the deletion with.
      */
-    public static func deleteObjects(objects: [NSManagedObject], context: NSManagedObjectContext) {
+    public static func deleteObjects(_ objects: [NSManagedObject], context: NSManagedObjectContext) {
         
         for object in objects {
-            context.deleteObject(object)
+            context.delete(object)
         }
     }
     
@@ -326,16 +327,17 @@ public final class DataManager {
         
         for entityName in managedObjectModel.entitiesByName.keys {
             
-            let request = NSFetchRequest(entityName: entityName)
+            
+            let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: entityName)
             request.includesPropertyValues = false
             
             do {
-                guard let objectsToDelete = try mainContext.executeFetchRequest(request) as? [NSManagedObject] else {
+                guard let objectsToDelete = try mainContext.fetch(request) as? [NSManagedObject] else {
                     fatalError("Attempting to fetch objects of an unknown entity.")
                 }
                 
                 for object in objectsToDelete {
-                    mainContext.deleteObject(object)
+                    mainContext.delete(object)
                 }
             }
             catch let error as NSError {
@@ -354,12 +356,12 @@ public final class DataManager {
      - parameter synchronously: Whether the main thread should block while writing to the persistent store or not.
      - parameter completion:    Called after the save on the private context completes. If there is an error, it is called immediately and the error parameter is populated.
      */
-    public static func persist(synchronously synchronously: Bool, completion: ((NSError?) -> Void)? = nil) {
+    public static func persist(synchronously: Bool, completion: ((NSError?) -> Void)? = nil) {
         
         var mainContextSaveError: NSError?
         
         if mainContext.hasChanges {
-            mainContext.performBlockAndWait() {
+            mainContext.performAndWait() {
                 do {
                     try self.mainContext.save()
                 }
@@ -386,10 +388,10 @@ public final class DataManager {
         
         if privateContext.hasChanges {
             if synchronously {
-                privateContext.performBlockAndWait(savePrivateContext)
+                privateContext.performAndWait(savePrivateContext)
             }
             else {
-                privateContext.performBlock(savePrivateContext)
+                privateContext.perform(savePrivateContext)
             }
         }
     }
@@ -398,7 +400,7 @@ public final class DataManager {
     
     // MARK: Logging
     
-    private static func logError(error: NSError, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
+    fileprivate static func logError(_ error: NSError, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
         
         errorLogger?.logError(error, file: file, function: function, line: line)
     }

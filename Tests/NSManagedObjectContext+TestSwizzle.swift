@@ -18,17 +18,17 @@ import XCTest
  */
 private enum ContextSwizzleBehavior {
     
-    case UseOriginalMethod
-    case ThrowError(NSManagedObjectContext)
+    case useOriginalMethod
+    case throwError(NSManagedObjectContext)
 }
 
 
 
 /// The behavior to use when executing the `executeFetchRequest(_:)` method.
-private var executeFetchRequestMethodBehavior = ContextSwizzleBehavior.UseOriginalMethod
+private var executeFetchRequestMethodBehavior = ContextSwizzleBehavior.useOriginalMethod
 
 /// The behavior to use when executing the `save` method.
-private var saveMethodBehavior = ContextSwizzleBehavior.UseOriginalMethod
+private var saveMethodBehavior = ContextSwizzleBehavior.useOriginalMethod
 
 
 
@@ -42,11 +42,11 @@ extension XCTestCase {
      - parameter contextToSwizzle: The context that should exhibit the error throwing behavior.
      - parameter test:             The test code.
      */
-    func executeTestWithErrorThrowingExecuteFetchRequestMock(contextToSwizzle contextToSwizzle: NSManagedObjectContext, test: () -> Void) {
+    func executeTestWithErrorThrowingExecuteFetchRequestMock(contextToSwizzle: NSManagedObjectContext, test: () -> Void) {
         
-        executeFetchRequestMethodBehavior = .ThrowError(contextToSwizzle)
+        executeFetchRequestMethodBehavior = .throwError(contextToSwizzle)
         test()
-        executeFetchRequestMethodBehavior = .UseOriginalMethod
+        executeFetchRequestMethodBehavior = .useOriginalMethod
     }
     
     /**
@@ -55,14 +55,38 @@ extension XCTestCase {
      - parameter contextToSwizzle: The context that should exhibit the error throwing behavior.
      - parameter test:             The test code.
      */
-    func executeTestWithErrorThrowingSaveMock(contextToSwizzle contextToSwizzle: NSManagedObjectContext, test: () -> Void) {
+    func executeTestWithErrorThrowingSaveMock(contextToSwizzle: NSManagedObjectContext, test: () -> Void) {
         
-        saveMethodBehavior = .ThrowError(contextToSwizzle)
+        saveMethodBehavior = .throwError(contextToSwizzle)
         test()
-        saveMethodBehavior = .UseOriginalMethod
+        saveMethodBehavior = .useOriginalMethod
     }
 }
 
+// DispatchQueue Extension
+
+extension DispatchQueue {
+    
+    private static var _onceTracker = [String]()
+    
+    /**
+     Executes a block of code, associated with a unique token, only once.  The code is thread safe and will
+     only execute the code once even in the presence of multithreaded calls.
+     
+     - parameter token: A unique reverse DNS style name such as com.vectorform.<name> or a GUID
+     - parameter block: Block to execute once
+     */
+    public class func once(token: String, block: (Void) -> Void) {
+        objc_sync_enter(self); defer { objc_sync_exit(self) }
+        
+        if _onceTracker.contains(token) {
+            return
+        }
+        
+        _onceTracker.append(token)
+        block()
+    }
+}
 
 
 // MARK: - NSManagedObjectContext Extension
@@ -71,16 +95,10 @@ extension NSManagedObjectContext {
     
     // MARK: Overrides
     
-    public override class func initialize() {
+    open override class func initialize() {
         
-        struct Static {
-            
-            static var token: dispatch_once_t = 0
-        }
-        
-        dispatch_once(&Static.token) { 
-            
-            swizzle(originalSelector: #selector(executeFetchRequest(_:)), swizzledSelector: #selector(dataManagerTestExecuteFetchRequest(_:)), forClass: self)
+       DispatchQueue.once(token: "") {
+            swizzle(originalSelector: #selector(fetch(_:)), swizzledSelector: #selector(dataManagerTestExecuteFetchRequest(_:)), forClass: self)
             swizzle(originalSelector: #selector(save), swizzledSelector: #selector(dataManagerTestSave), forClass: self)
         }
     }
@@ -89,10 +107,10 @@ extension NSManagedObjectContext {
     
     // MARK: Swizzled Methods
     
-    func dataManagerTestExecuteFetchRequest(request: NSFetchRequest) throws -> [AnyObject] {
+    func dataManagerTestExecuteFetchRequest(_ request: NSFetchRequest<NSFetchRequestResult>) throws -> [AnyObject] {
         
         switch executeFetchRequestMethodBehavior {
-        case .ThrowError(let context) where context === self:
+        case .throwError(let context) where context === self:
             throw NSError(domain: "DataManagerTests", code: 0, userInfo: nil)
         default:
             return try dataManagerTestExecuteFetchRequest(request)
@@ -104,7 +122,7 @@ extension NSManagedObjectContext {
     func dataManagerTestSave() throws {
         
         switch saveMethodBehavior {
-        case .ThrowError(let context) where context === self:
+        case .throwError(let context) where context === self:
             throw NSError(domain: "DataManagerTests", code: 0, userInfo: nil)
         default:
             return try dataManagerTestSave()

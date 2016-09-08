@@ -18,7 +18,7 @@ class DataManagerTests: XCTestCase {
     
         super.setUp()
         
-        DataManager.setUpWithDataModelName("TestModel", dataModelBundle: NSBundle(forClass: DataManagerTests.self), persistentStoreName: "Test", persistentStoreType: .InMemory)
+        DataManager.setUpWithDataModelName("TestModel", dataModelBundle: Bundle(for: DataManagerTests.self), persistentStoreName: "Test", persistentStoreType: .inMemory)
     }
     
     
@@ -34,14 +34,14 @@ class DataManagerTests: XCTestCase {
     
     // MARK: Helper
     
-    func createTestPerson(name name: String = "Test Person", birthDate: NSDate = NSDate(timeIntervalSince1970: 0)) -> Person {
+    func createTestPerson(name: String = "Test Person", birthDate: Date = Date(timeIntervalSince1970: 0)) -> Person {
         
         return Person(context: DataManager.mainContext, name: name, birthDate: birthDate)
     }
     
     
     
-    func createTestGroup(title title: String = "Test Group") -> Group {
+    func createTestGroup(title: String = "Test Group") -> Group {
         
         return Group(context: DataManager.mainContext, title: title)
     }
@@ -55,8 +55,8 @@ class DataManagerTests: XCTestCase {
         
         let childContext = DataManager.createChildContextWithParentContext(DataManager.mainContext)
         
-        XCTAssertEqual(childContext.concurrencyType, NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
-        XCTAssertTrue(childContext.parentContext === DataManager.mainContext)
+        XCTAssertEqual(childContext.concurrencyType, NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
+        XCTAssertTrue(childContext.parent === DataManager.mainContext)
     }
     
     
@@ -65,8 +65,8 @@ class DataManagerTests: XCTestCase {
     
     func testFetchingSingleObjectWithSortDescriptor() {
         
-        let person1 = createTestPerson(birthDate: NSDate(timeIntervalSince1970: 0))
-        let person2 = createTestPerson(birthDate: NSDate(timeIntervalSince1970: 1))
+        let person1 = createTestPerson(birthDate: Date(timeIntervalSince1970: 0))
+        let person2 = createTestPerson(birthDate: Date(timeIntervalSince1970: 1))
         
         let ascendingSortDescriptor = NSSortDescriptor(key: "birthDate", ascending: true)
         let descendingSortDescriptor = NSSortDescriptor(key: "birthDate", ascending: false)
@@ -162,8 +162,8 @@ class DataManagerTests: XCTestCase {
     
     func testFetchingMultipleObjectsWithSortDescriptor() {
         
-        let person1 = createTestPerson(birthDate: NSDate(timeIntervalSince1970: 0))
-        let person2 = createTestPerson(birthDate: NSDate(timeIntervalSince1970: 1))
+        let person1 = createTestPerson(birthDate: Date(timeIntervalSince1970: 0))
+        let person2 = createTestPerson(birthDate: Date(timeIntervalSince1970: 1))
         
         let ascendingSortDescriptor = NSSortDescriptor(key: "birthDate", ascending: true)
         let descendingSortDescriptor = NSSortDescriptor(key: "birthDate", ascending: false)
@@ -222,8 +222,8 @@ class DataManagerTests: XCTestCase {
         DataManager.persist(synchronously: true)
         DataManager.deleteObjects([person1, person2], context: DataManager.mainContext)
         
-        XCTAssertTrue(person1.deleted)
-        XCTAssertTrue(person2.deleted)
+        XCTAssertTrue(person1.isDeleted)
+        XCTAssertTrue(person2.isDeleted)
     }
     
     
@@ -238,10 +238,10 @@ class DataManagerTests: XCTestCase {
         DataManager.persist(synchronously: true)
         DataManager.deleteAllObjects()
         
-        XCTAssertTrue(person1.deleted)
-        XCTAssertTrue(person2.deleted)
-        XCTAssertTrue(group1.deleted)
-        XCTAssertTrue(group2.deleted)
+        XCTAssertTrue(person1.isDeleted)
+        XCTAssertTrue(person2.isDeleted)
+        XCTAssertTrue(group1.isDeleted)
+        XCTAssertTrue(group2.isDeleted)
     }
     
     
@@ -268,13 +268,13 @@ class DataManagerTests: XCTestCase {
         
         XCTAssertTrue(person1.managedObjectContext?.hasChanges == true)
         
-        let expectation = expectationWithDescription("Expect private context to save asynchronously.")
+        let expectation = self.expectation(description: "Expect private context to save asynchronously.")
         
         DataManager.persist(synchronously: false) { error in
             
             defer { expectation.fulfill() }
             
-            guard let privateContext = person1.managedObjectContext?.parentContext else {
+            guard let privateContext = person1.managedObjectContext?.parent else {
                 XCTFail("Failed to obtain parent context from person.")
                 return
             }
@@ -285,7 +285,7 @@ class DataManagerTests: XCTestCase {
         
         XCTAssertTrue(person1.managedObjectContext?.hasChanges == false)
         
-        waitForExpectationsWithTimeout(5) { error in
+        waitForExpectations(timeout: 5) { error in
             
             if let error = error {
                 XCTFail("Private context failed to save. Expectation error: \(error.localizedDescription)")
@@ -304,7 +304,7 @@ class DataManagerTests: XCTestCase {
         DataManager.persist(synchronously: true)
         
         XCTAssertTrue(person1.managedObjectContext?.hasChanges == false)
-        XCTAssertTrue(person1.managedObjectContext?.parentContext?.hasChanges == false)
+        XCTAssertTrue(person1.managedObjectContext?.parent?.hasChanges == false)
     }
     
     

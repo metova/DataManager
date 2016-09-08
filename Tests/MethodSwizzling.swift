@@ -8,7 +8,7 @@
 
 import Foundation
 
-func swizzle(originalSelector originalSelector: Selector, swizzledSelector: Selector, forClass classType: AnyClass) {
+func swizzle(originalSelector: Selector, swizzledSelector: Selector, forClass classType: AnyClass) {
     
     let originalMethod = class_getInstanceMethod(classType, originalSelector)
     let swizzledMethod = class_getInstanceMethod(classType, swizzledSelector)
