@@ -31,6 +31,14 @@ If you would like to test a beta version of DataManager, you can install the lat
 pod 'DataManager', :git => 'https://github.com/metova/DataManager.git', :branch => 'develop'
 ```
 
+## Swift 3
+
+If you are using Swift 3:
+
+```ruby
+pod 'DataManager', :git => 'https://github.com/metova/DataManager.git', :branch => 'swift-3'
+```
+
 ## Usage
 
 #### Setup
