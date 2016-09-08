@@ -76,7 +76,7 @@ extension DispatchQueue {
      - parameter token: A unique reverse DNS style name such as com.vectorform.<name> or a GUID
      - parameter block: Block to execute once
      */
-    public class func once(token: String, block: (Void) -> Void) {
+    public class func once(token: String, block:(Void)->Void) {
         objc_sync_enter(self); defer { objc_sync_exit(self) }
         
         if _onceTracker.contains(token) {
@@ -97,7 +97,7 @@ extension NSManagedObjectContext {
     
     open override class func initialize() {
         
-       DispatchQueue.once(token: "") {
+       DispatchQueue.once(token: "NSManagedObjectContextSwizzle") {
             swizzle(originalSelector: #selector(fetch(_:)), swizzledSelector: #selector(dataManagerTestExecuteFetchRequest(_:)), forClass: self)
             swizzle(originalSelector: #selector(save), swizzledSelector: #selector(dataManagerTestSave), forClass: self)
         }
