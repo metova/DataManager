@@ -6,7 +6,6 @@ disabled_rules: # rule identifiers to exclude from running
   - opening_brace
   - file_length # This rule counts white space and comments.  Re-enabled when we've fixed it to not do that.
   - nesting
-  - multiple_empty_lines
 opt_in_rules: # some rules are only opt-in
   - empty_count
   - force_unwrapping
@@ -79,4 +78,3 @@ custom_rules:
       name: "Multiple Empty Lines"
       regex: "((?:\s*\n){3,})"
       message: "There are too many line breaks"
-      severity: error
