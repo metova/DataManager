@@ -15,7 +15,7 @@ import XCTest
 
 extension XCTestCase {
     
-    func isLogMethodExecutedInClosure(closure: () -> Void) -> Bool {
+    func isLogMethodExecutedInClosure(_ closure: () -> Void) -> Bool {
         
         let originalLogger = DataManager.errorLogger
         let mockLogger = MockLogger()

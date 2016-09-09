@@ -67,7 +67,7 @@ extension XCTestCase {
 
 extension DispatchQueue {
     
-    private static var _onceTracker = [String]()
+    fileprivate static var onceTracker = [String]()
     
     /**
      Executes a block of code, associated with a unique token, only once.  The code is thread safe and will
@@ -79,11 +79,11 @@ extension DispatchQueue {
     public class func once(token: String, block: (Void) -> Void) {
         objc_sync_enter(self); defer { objc_sync_exit(self) }
         
-        if _onceTracker.contains(token) {
+        if onceTracker.contains(token) {
             return
         }
         
-        _onceTracker.append(token)
+        onceTracker.append(token)
         block()
     }
 }
