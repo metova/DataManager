@@ -15,7 +15,7 @@ DataManager is a lightweight Core Data utility. It is not a replacement/wrapper 
 
 ## Requirements
 
-- Swift 2.2
+- Swift 3.0
 
 ## Installation
 
@@ -39,7 +39,7 @@ When your app is launched, set up `DataManager` with the data model name and a n
 ```swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-    DataManager.setUpWithDataModelName("MyApp", persistentStoreName: "MyApp")
+    DataManager.setUpDataModel(name: "MyApp", bundle: Bundle.main, persistentStoreName: "MyApp")
 
     /* ... */
 
@@ -61,7 +61,7 @@ let olderUsers = DataManager.fetchObjects(entity: User.self, predicate: predicat
 #### Deleting
 
 ```swift
-DataManager.deleteObjects([user1, user2], context: DataManager.mainContext)
+DataManager.delete(objects: [user1, user2], context: DataManager.mainContext)
 ```
 
 #### Saving
@@ -75,7 +75,7 @@ DataManager.persist(synchronously: false)
 ```swift
 let backgroundContext = DataManager.createChildContextWithParentContext(DataManager.mainContext)
 
-backgroundContext.performBlock {
+backgroundContext.perform {
     /* Do heavy lifting in the background */
 }
 ```

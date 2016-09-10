@@ -126,8 +126,8 @@ public final class DataManager {
     /**
      This method must be called before DataManager can be used. It provides DataManager with the required information for setting up the Core Data stack. Call this in application(_:didFinishLaunchingWithOptions:).
      
-     - parameter dataModelName:       The name of the data model schema file.
-     - parameter dataModelBundle:     The bundle in which the data model schema file resides.
+     - parameter name:       The name of the data model schema file.
+     - parameter bundle:     The bundle in which the data model schema file resides.
      - parameter persistentStoreName: The name of the persistent store.
      - parameter persistentStoreType: The persistent store type. Defaults to SQLite.
      */
