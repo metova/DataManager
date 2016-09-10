@@ -67,7 +67,7 @@ extension XCTestCase {
 
 extension DispatchQueue {
     
-    fileprivate static var onceTracker = [String]()
+    private static var onceTracker = [String]()
     
     /**
      Executes a block of code, associated with a unique token, only once.  The code is thread safe and will
@@ -76,7 +76,7 @@ extension DispatchQueue {
      - parameter token: A unique reverse DNS style name such as com.vectorform.<name> or a GUID
      - parameter block: Block to execute once
      */
-    public class func once(token: String, block: (Void) -> Void) {
+    class func once(token: String, block: (Void) -> Void) {
         objc_sync_enter(self); defer { objc_sync_exit(self) }
         
         if onceTracker.contains(token) {
@@ -87,7 +87,6 @@ extension DispatchQueue {
         block()
     }
 }
-
 
 // MARK: - NSManagedObjectContext Extension
 

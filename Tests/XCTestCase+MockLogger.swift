@@ -34,7 +34,7 @@ class MockLogger: DataManagerErrorLogger {
     
     var didExecuteLogMethod = false
     
-    func logError(_ error: NSError, file: StaticString, function: StaticString, line: UInt) {
+    func log(error: NSError, file: StaticString, function: StaticString, line: UInt) {
         
         didExecuteLogMethod = true
     }

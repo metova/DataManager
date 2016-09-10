@@ -18,7 +18,7 @@ class DataManagerTests: XCTestCase {
     
         super.setUp()
         
-        DataManager.setUpWithDataModelName("TestModel", dataModelBundle: Bundle(for: DataManagerTests.self), persistentStoreName: "Test", persistentStoreType: .inMemory)
+        DataManager.setUpDataModel(name: "TestModel", bundle: Bundle(for: DataManagerTests.self), persistentStoreName: "Test", persistentStoreType: .inMemory)
     }
     
     
@@ -220,7 +220,7 @@ class DataManagerTests: XCTestCase {
         let person2 = createTestPerson()
         
         DataManager.persist(synchronously: true)
-        DataManager.deleteObjects([person1, person2], context: DataManager.mainContext)
+        DataManager.delete(objects: [person1, person2], context: DataManager.mainContext)
         
         XCTAssertTrue(person1.isDeleted)
         XCTAssertTrue(person2.isDeleted)

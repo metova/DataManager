@@ -73,7 +73,7 @@ public protocol DataManagerErrorLogger {
      - parameter function: The function from which the error logging method was called from.
      - parameter line:     The line number in the file from which the error logging method was called from.
      */
-    func logError(_ error: NSError, file: StaticString, function: StaticString, line: UInt)
+    func log(error: NSError, file: StaticString, function: StaticString, line: UInt)
 }
 
 
@@ -82,7 +82,7 @@ public protocol DataManagerErrorLogger {
 
 private class DefaultLogger: DataManagerErrorLogger {
     
-    func logError(_ error: NSError, file: StaticString, function: StaticString, line: UInt) {
+    func log(error: NSError, file: StaticString, function: StaticString, line: UInt) {
         
         print("[DataManager - \(function) line \(line)] Error: \(error.localizedDescription)")
     }
@@ -94,7 +94,7 @@ private class DefaultLogger: DataManagerErrorLogger {
 
 private struct Constants {
     
-    static fileprivate let mustCallSetupMethodErrorMessage = "DataManager must be set up using setUpWithDataModelName(_:persistentStoreType:) before it can be used."
+    static fileprivate let mustCallSetupMethodErrorMessage = "DataManager must be set up using setUpDataModel(_:persistentStoreType:) before it can be used."
 }
 
 
@@ -108,10 +108,10 @@ public final class DataManager {
     
     // MARK: Properties
     
-    fileprivate static var dataModelName: String?
-    fileprivate static var dataModelBundle: Bundle?
-    fileprivate static var persistentStoreName: String?
-    fileprivate static var persistentStoreType = PersistentStoreType.sqLite
+    private static var dataModelName: String?
+    private static var dataModelBundle: Bundle?
+    private static var persistentStoreName: String?
+    private static var persistentStoreType = PersistentStoreType.sqLite
     
     /// The logger to use for logging errors caught internally. A default logger is used if a custom one isn't provided. Assigning nil to this property prevents DataManager from emitting any logs to the console.
     public static var errorLogger: DataManagerErrorLogger? = DefaultLogger()
@@ -131,10 +131,10 @@ public final class DataManager {
      - parameter persistentStoreName: The name of the persistent store.
      - parameter persistentStoreType: The persistent store type. Defaults to SQLite.
      */
-    public static func setUpWithDataModelName(_ dataModelName: String, dataModelBundle: Bundle, persistentStoreName: String, persistentStoreType: PersistentStoreType = .sqLite) {
+    public static func setUpDataModel(name: String, bundle: Bundle, persistentStoreName: String, persistentStoreType: PersistentStoreType = .sqLite) {
         
-        DataManager.dataModelName = dataModelName
-        DataManager.dataModelBundle = dataModelBundle
+        DataManager.dataModelName = name
+        DataManager.dataModelBundle = bundle
         DataManager.persistentStoreName = persistentStoreName
         DataManager.persistentStoreType = persistentStoreType
     }
@@ -250,7 +250,7 @@ public final class DataManager {
      */
     public static func fetchObjects<T: NSManagedObject>(entity: T.Type, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, context: NSManagedObjectContext) -> [T] {
         
-        let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: String(describing: entity))
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: entity))
         request.predicate = predicate
         request.sortDescriptors = sortDescriptors
         request.fetchBatchSize = defaultFetchBatchSize
@@ -282,7 +282,7 @@ public final class DataManager {
      */
     public static func fetchObject<T: NSManagedObject>(entity: T.Type, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, context: NSManagedObjectContext) -> T? {
         
-        let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: String(describing: entity))
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: entity))
         
         request.predicate = predicate
         request.sortDescriptors = sortDescriptors
@@ -311,7 +311,7 @@ public final class DataManager {
      - parameter objects: The objects to delete.
      - parameter context: The context to perform the deletion with.
      */
-    public static func deleteObjects(_ objects: [NSManagedObject], context: NSManagedObjectContext) {
+    public static func delete(objects: [NSManagedObject], context: NSManagedObjectContext) {
         
         for object in objects {
             context.delete(object)
@@ -328,7 +328,7 @@ public final class DataManager {
         for entityName in managedObjectModel.entitiesByName.keys {
             
             
-            let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: entityName)
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
             request.includesPropertyValues = false
             
             do {
@@ -402,6 +402,6 @@ public final class DataManager {
     
     fileprivate static func logError(_ error: NSError, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
         
-        errorLogger?.logError(error, file: file, function: function, line: line)
+        errorLogger?.log(error: error, file: file, function: function, line: line)
     }
 }
