@@ -1,6 +1,6 @@
 ![DataManager](header_logo.png)
 
-[![Build Status](https://travis-ci.org/metova/DataManager.svg)](https://travis-ci.org/metova/DataManager)
+[![Build Status](https://travis-ci.org/metova/DataManager.svg)](https://travis-ci.org/metova/DataManager?branch=master)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/DataManager.svg)](https://img.shields.io/cocoapods/v/DataManager.svg)
 [![Documentation](https://img.shields.io/cocoapods/metrics/doc-percent/DataManager.svg)](http://cocoadocs.org/docsets/DataManager/)
 [![Coverage Status](https://coveralls.io/repos/github/metova/DataManager/badge.svg?branch=master)](https://coveralls.io/github/metova/DataManager?branch=master)
