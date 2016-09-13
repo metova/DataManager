@@ -39,7 +39,7 @@ When your app is launched, set up `DataManager` with the data model name and a n
 ```swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-    DataManager.setUpDataModel(name: "MyApp", bundle: Bundle.main, persistentStoreName: "MyApp")
+    DataManager.setUp(withDataModelName: "MyApp", bundle: Bundle.main, persistentStoreName: "MyApp")
 
     /* ... */
 
@@ -61,7 +61,7 @@ let olderUsers = DataManager.fetchObjects(entity: User.self, predicate: predicat
 #### Deleting
 
 ```swift
-DataManager.delete(objects: [user1, user2], context: DataManager.mainContext)
+DataManager.delete([user1, user2], in: DataManager.mainContext)
 ```
 
 #### Saving
@@ -73,7 +73,7 @@ DataManager.persist(synchronously: false)
 #### Child Contexts
 
 ```swift
-let backgroundContext = DataManager.createChildContextWithParentContext(DataManager.mainContext)
+let backgroundContext = DataManager.createChildContext(withParent: DataManager.mainContext)
 
 backgroundContext.perform {
     /* Do heavy lifting in the background */
