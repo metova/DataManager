@@ -94,7 +94,7 @@ private class DefaultLogger: DataManagerErrorLogger {
 
 private struct Constants {
     
-    static fileprivate let mustCallSetupMethodErrorMessage = "DataManager must be set up using setUpDataModel(_:persistentStoreType:) before it can be used."
+    static fileprivate let mustCallSetupMethodErrorMessage = "DataManager must be set up using setUp(withDataModelName:bundle:persistentStoreType:) before it can be used."
 }
 
 
@@ -131,9 +131,9 @@ public final class DataManager {
      - parameter persistentStoreName: The name of the persistent store.
      - parameter persistentStoreType: The persistent store type. Defaults to SQLite.
      */
-    public static func setUpDataModel(name: String, bundle: Bundle, persistentStoreName: String, persistentStoreType: PersistentStoreType = .sqLite) {
+    public static func setUp(withDataModelName dataModelName: String, bundle: Bundle, persistentStoreName: String, persistentStoreType: PersistentStoreType = .sqLite) {
         
-        DataManager.dataModelName = name
+        DataManager.dataModelName = dataModelName
         DataManager.dataModelBundle = bundle
         DataManager.persistentStoreName = persistentStoreName
         DataManager.persistentStoreType = persistentStoreType
@@ -143,7 +143,7 @@ public final class DataManager {
     
     // MARK: Core Data Stack
     
-    fileprivate static var applicationDocumentsDirectory: URL = {
+    private static var applicationDocumentsDirectory: URL = {
         
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return urls[urls.count - 1]
@@ -151,7 +151,7 @@ public final class DataManager {
     
     
     
-    fileprivate static var managedObjectModel: NSManagedObjectModel = {
+    private static var managedObjectModel: NSManagedObjectModel = {
 
         guard let dataModelName = DataManager.dataModelName else {
             fatalError("Attempting to use nil data model name. \(Constants.mustCallSetupMethodErrorMessage)")
@@ -170,7 +170,7 @@ public final class DataManager {
     
     
     
-    fileprivate static var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
+    private static var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         
         guard let persistentStoreName = DataManager.persistentStoreName else {
             fatalError("Attempting to use nil persistent store name. \(Constants.mustCallSetupMethodErrorMessage)")
@@ -227,10 +227,10 @@ public final class DataManager {
      
      - returns: A private queue concurrency type context that is the child of the specified parent context.
      */
-    public static func createChildContextWithParentContext(_ parentContext: NSManagedObjectContext) -> NSManagedObjectContext {
+    public static func createChildContext(withParent parent: NSManagedObjectContext) -> NSManagedObjectContext {
         
         let managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        managedObjectContext.parent = parentContext
+        managedObjectContext.parent = parent
         return managedObjectContext
     }
     
@@ -250,7 +250,7 @@ public final class DataManager {
      */
     public static func fetchObjects<T: NSManagedObject>(entity: T.Type, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, context: NSManagedObjectContext) -> [T] {
         
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: entity))
+        let request = NSFetchRequest<T>(entityName: String(describing: entity))
         request.predicate = predicate
         request.sortDescriptors = sortDescriptors
         request.fetchBatchSize = defaultFetchBatchSize
@@ -263,7 +263,7 @@ public final class DataManager {
             return results
         }
         catch let error as NSError {
-            logError(error)
+            log(error: error)
             return [T]()
         }
     }
@@ -282,7 +282,7 @@ public final class DataManager {
      */
     public static func fetchObject<T: NSManagedObject>(entity: T.Type, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, context: NSManagedObjectContext) -> T? {
         
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: entity))
+        let request = NSFetchRequest<T>(entityName: String(describing: entity))
         
         request.predicate = predicate
         request.sortDescriptors = sortDescriptors
@@ -296,7 +296,7 @@ public final class DataManager {
             return results.first
         }
         catch let error as NSError {
-            logError(error)
+            log(error: error)
             return nil
         }
     }
@@ -311,7 +311,7 @@ public final class DataManager {
      - parameter objects: The objects to delete.
      - parameter context: The context to perform the deletion with.
      */
-    public static func delete(objects: [NSManagedObject], context: NSManagedObjectContext) {
+    public static func delete(_ objects: [NSManagedObject], in context: NSManagedObjectContext) {
         
         for object in objects {
             context.delete(object)
@@ -328,7 +328,7 @@ public final class DataManager {
         for entityName in managedObjectModel.entitiesByName.keys {
             
             
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+            let request = NSFetchRequest<NSManagedObject>(entityName: entityName)
             request.includesPropertyValues = false
             
             do {
@@ -341,7 +341,7 @@ public final class DataManager {
                 }
             }
             catch let error as NSError {
-                logError(error)
+                log(error: error)
             }
         }
     }
@@ -361,7 +361,7 @@ public final class DataManager {
         var mainContextSaveError: NSError?
         
         if mainContext.hasChanges {
-            mainContext.performAndWait() {
+            mainContext.performAndWait {
                 do {
                     try self.mainContext.save()
                 }
@@ -400,7 +400,7 @@ public final class DataManager {
     
     // MARK: Logging
     
-    fileprivate static func logError(_ error: NSError, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
+    private static func log(error: NSError, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
         
         errorLogger?.log(error: error, file: file, function: function, line: line)
     }

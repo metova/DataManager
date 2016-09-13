@@ -76,7 +76,7 @@ extension DispatchQueue {
      - parameter token: A unique reverse DNS style name such as com.vectorform.<name> or a GUID
      - parameter block: Block to execute once
      */
-    class func once(token: String, block: (Void) -> Void) {
+    class func once(withToken token: String, block: (Void) -> Void) {
         objc_sync_enter(self); defer { objc_sync_exit(self) }
         
         if onceTracker.contains(token) {
@@ -96,9 +96,9 @@ extension NSManagedObjectContext {
     
     open override class func initialize() {
         
-       DispatchQueue.once(token: "NSManagedObjectContextSwizzle") {
-            swizzle(originalSelector: #selector(fetch(_:)), swizzledSelector: #selector(dataManagerTestExecuteFetchRequest(_:)), forClass: self)
-            swizzle(originalSelector: #selector(save), swizzledSelector: #selector(dataManagerTestSave), forClass: self)
+       DispatchQueue.once(withToken: "NSManagedObjectContextSwizzle") {
+            swizzle(original: #selector(fetch(_:)), with: #selector(dataManagerTestExecute(fetchRequest:)), for: self)
+            swizzle(original: #selector(save), with: #selector(dataManagerTestSave), for: self)
         }
     }
 
@@ -106,13 +106,13 @@ extension NSManagedObjectContext {
     
     // MARK: Swizzled Methods
     
-    func dataManagerTestExecuteFetchRequest(_ request: NSFetchRequest<NSFetchRequestResult>) throws -> [AnyObject] {
+    func dataManagerTestExecute(fetchRequest: NSFetchRequest<NSManagedObject>) throws -> [AnyObject] {
         
         switch executeFetchRequestMethodBehavior {
         case .throwError(let context) where context === self:
             throw NSError(domain: "DataManagerTests", code: 0, userInfo: nil)
         default:
-            return try dataManagerTestExecuteFetchRequest(request)
+            return try dataManagerTestExecute(fetchRequest: fetchRequest)
         }
     }
     

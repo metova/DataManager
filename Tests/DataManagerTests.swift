@@ -18,7 +18,7 @@ class DataManagerTests: XCTestCase {
     
         super.setUp()
         
-        DataManager.setUpDataModel(name: "TestModel", bundle: Bundle(for: DataManagerTests.self), persistentStoreName: "Test", persistentStoreType: .inMemory)
+        DataManager.setUp(withDataModelName: "TestModel", bundle: Bundle(for: DataManagerTests.self), persistentStoreName: "Test", persistentStoreType: .inMemory)
     }
     
     
@@ -53,7 +53,7 @@ class DataManagerTests: XCTestCase {
     
     func testCreatingChildContext() {
         
-        let childContext = DataManager.createChildContextWithParentContext(DataManager.mainContext)
+        let childContext = DataManager.createChildContext(withParent: DataManager.mainContext)
         
         XCTAssertEqual(childContext.concurrencyType, NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
         XCTAssertTrue(childContext.parent === DataManager.mainContext)
@@ -220,7 +220,7 @@ class DataManagerTests: XCTestCase {
         let person2 = createTestPerson()
         
         DataManager.persist(synchronously: true)
-        DataManager.delete(objects: [person1, person2], context: DataManager.mainContext)
+        DataManager.delete([person1, person2], in: DataManager.mainContext)
         
         XCTAssertTrue(person1.isDeleted)
         XCTAssertTrue(person2.isDeleted)

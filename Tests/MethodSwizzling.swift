@@ -8,15 +8,15 @@
 
 import Foundation
 
-func swizzle(originalSelector: Selector, swizzledSelector: Selector, forClass classType: AnyClass) {
+func swizzle(original selector: Selector, with newSelector: Selector, for classType: AnyClass) {
     
-    let originalMethod = class_getInstanceMethod(classType, originalSelector)
-    let swizzledMethod = class_getInstanceMethod(classType, swizzledSelector)
+    let originalMethod = class_getInstanceMethod(classType, selector)
+    let swizzledMethod = class_getInstanceMethod(classType, newSelector)
     
-    let didAddMethod = class_addMethod(classType, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))
+    let didAddMethod = class_addMethod(classType, selector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))
     
     if didAddMethod {
-        class_replaceMethod(classType, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
+        class_replaceMethod(classType, newSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
     }
     else {
         method_exchangeImplementations(originalMethod, swizzledMethod)
