@@ -1,5 +1,9 @@
 # DataManager CHANGELOG
 
+## 1.0.0
+
+- Updated for Swift 3.
+
 ## 0.2.2
 
 - Added header logo, usage examples, and a basic description to the README.

@@ -68,8 +68,8 @@ class DataManagerTests: XCTestCase {
         let person1 = createTestPerson(birthDate: Date(timeIntervalSince1970: 0))
         let person2 = createTestPerson(birthDate: Date(timeIntervalSince1970: 1))
         
-        let ascendingSortDescriptor = NSSortDescriptor(key: "birthDate", ascending: true)
-        let descendingSortDescriptor = NSSortDescriptor(key: "birthDate", ascending: false)
+        let ascendingSortDescriptor = NSSortDescriptor(key: #keyPath(Person.birthDate), ascending: true)
+        let descendingSortDescriptor = NSSortDescriptor(key: #keyPath(Person.birthDate), ascending: false)
         
         let olderPerson = DataManager.fetchObject(entity: Person.self, sortDescriptors: [ascendingSortDescriptor], context: DataManager.mainContext)
         
@@ -89,7 +89,7 @@ class DataManagerTests: XCTestCase {
         let person = createTestPerson(name: "Logan Gauthier")
         _ = createTestPerson()
         
-        let predicate = NSPredicate(format: "name == %@", "Logan Gauthier")
+        let predicate = NSPredicate(format: "\(#keyPath(Person.name)) == %@", "Logan Gauthier")
         
         let fetchedPerson = DataManager.fetchObject(entity: Person.self, predicate: predicate, context: DataManager.mainContext)
         
@@ -149,7 +149,7 @@ class DataManagerTests: XCTestCase {
         let person2 = createTestPerson()
         _ = createTestPerson(name: "Some Other Name")
         
-        let predicate = NSPredicate(format: "name == %@", "Test Person")
+        let predicate = NSPredicate(format: "\(#keyPath(Person.name)) == %@", "Test Person")
         
         let fetchedPeople = DataManager.fetchObjects(entity: Person.self, predicate: predicate, context: DataManager.mainContext)
         
@@ -165,8 +165,8 @@ class DataManagerTests: XCTestCase {
         let person1 = createTestPerson(birthDate: Date(timeIntervalSince1970: 0))
         let person2 = createTestPerson(birthDate: Date(timeIntervalSince1970: 1))
         
-        let ascendingSortDescriptor = NSSortDescriptor(key: "birthDate", ascending: true)
-        let descendingSortDescriptor = NSSortDescriptor(key: "birthDate", ascending: false)
+        let ascendingSortDescriptor = NSSortDescriptor(key: #keyPath(Person.birthDate), ascending: true)
+        let descendingSortDescriptor = NSSortDescriptor(key: #keyPath(Person.birthDate), ascending: false)
         
         let fetchedPeopleAscending = DataManager.fetchObjects(entity: Person.self, sortDescriptors: [ascendingSortDescriptor], context: DataManager.mainContext)
         
