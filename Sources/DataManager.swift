@@ -126,8 +126,8 @@ public final class DataManager {
     /**
      This method must be called before DataManager can be used. It provides DataManager with the required information for setting up the Core Data stack. Call this in application(_:didFinishLaunchingWithOptions:).
      
-     - parameter name:       The name of the data model schema file.
-     - parameter bundle:     The bundle in which the data model schema file resides.
+     - parameter dataModelName:       The name of the data model schema file.
+     - parameter bundle:              The bundle in which the data model schema file resides.
      - parameter persistentStoreName: The name of the persistent store.
      - parameter persistentStoreType: The persistent store type. Defaults to SQLite.
      */
@@ -256,11 +256,7 @@ public final class DataManager {
         request.fetchBatchSize = defaultFetchBatchSize
         
         do {
-            guard let results = try context.fetch(request) as? [T] else {
-                fatalError("Attempting to fetch objects of an unknown entity (\(entity)).")
-            }
-            
-            return results
+            return try context.fetch(request)
         }
         catch let error as NSError {
             log(error: error)
@@ -289,11 +285,7 @@ public final class DataManager {
         request.fetchLimit = 1
         
         do {
-            guard let results = try context.fetch(request) as? [T] else {
-                fatalError("Attempting to fetch objects of an unknown entity (\(entity)).")
-            }
-            
-            return results.first
+            return try context.fetch(request).first
         }
         catch let error as NSError {
             log(error: error)
@@ -327,16 +319,11 @@ public final class DataManager {
         
         for entityName in managedObjectModel.entitiesByName.keys {
             
-            
             let request = NSFetchRequest<NSManagedObject>(entityName: entityName)
             request.includesPropertyValues = false
             
             do {
-                guard let objectsToDelete = try mainContext.fetch(request) as? [NSManagedObject] else {
-                    fatalError("Attempting to fetch objects of an unknown entity.")
-                }
-                
-                for object in objectsToDelete {
+                for object in try mainContext.fetch(request) {
                     mainContext.delete(object)
                 }
             }

@@ -13,8 +13,8 @@ import XCTest
 /**
  Represents the behavior an NSManagedObjectContext should use when executing a swizzled method.
  
- - UseOriginalMethod: The context should execute the original method and not use the swizzled version.
- - ThrowError:        If the context is the same instance as the associated context, it should execute the swizzled code which throws a fake error. Otherwise, it should execute the original method.
+ - useOriginalMethod: The context should execute the original method and not use the swizzled version.
+ - throwError:        If the context is the same instance as the associated context, it should execute the swizzled code which throws a fake error. Otherwise, it should execute the original method.
  */
 private enum ContextSwizzleBehavior {
     
@@ -24,7 +24,7 @@ private enum ContextSwizzleBehavior {
 
 
 
-/// The behavior to use when executing the `executeFetchRequest(_:)` method.
+/// The behavior to use when executing the `fetch(_:)` method.
 private var executeFetchRequestMethodBehavior = ContextSwizzleBehavior.useOriginalMethod
 
 /// The behavior to use when executing the `save` method.
@@ -37,7 +37,7 @@ private var saveMethodBehavior = ContextSwizzleBehavior.useOriginalMethod
 extension XCTestCase {
     
     /**
-     When this method is called, `contextToSwizzle` will throw an error whenever `executeFetchRequest(_:)` is invoked inside the `test` closure.
+     When this method is called, `contextToSwizzle` will throw an error whenever `fetch(_:)` is invoked inside the `test` closure.
      
      - parameter contextToSwizzle: The context that should exhibit the error throwing behavior.
      - parameter test:             The test code.
@@ -63,6 +63,8 @@ extension XCTestCase {
     }
 }
 
+
+
 // MARK: - DispatchQueue Extension
 
 extension DispatchQueue {
@@ -73,20 +75,21 @@ extension DispatchQueue {
      Executes a block of code, associated with a unique token, only once.  The code is thread safe and will
      only execute the code once even in the presence of multithreaded calls.
      
-     - parameter token: A unique reverse DNS style name such as com.vectorform.<name> or a GUID
-     - parameter block: Block to execute once
+     - parameter token:      A unique token representing the action to execute once.
+     - parameter onceAction: Action to execute once.
      */
-    class func once(withToken token: String, block: (Void) -> Void) {
+    class func once(withToken token: String, onceAction: () -> Void) {
+        
         objc_sync_enter(self); defer { objc_sync_exit(self) }
         
-        if onceTracker.contains(token) {
-            return
-        }
+        guard !onceTracker.contains(token) else { return }
         
         onceTracker.append(token)
-        block()
+        onceAction()
     }
 }
+
+
 
 // MARK: - NSManagedObjectContext Extension
 
