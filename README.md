@@ -1,6 +1,6 @@
 ![DataManager](header_logo.png)
 
-[![Build Status](https://travis-ci.org/metova/DataManager.svg)](https://travis-ci.org/metova/DataManager)
+[![Build Status](https://travis-ci.org/metova/DataManager.svg)](https://travis-ci.org/metova/DataManager?branch=master)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/DataManager.svg)](https://img.shields.io/cocoapods/v/DataManager.svg)
 [![Documentation](https://img.shields.io/cocoapods/metrics/doc-percent/DataManager.svg)](http://cocoadocs.org/docsets/DataManager/)
 [![Coverage Status](https://coveralls.io/repos/github/metova/DataManager/badge.svg?branch=master)](https://coveralls.io/github/metova/DataManager?branch=master)
@@ -31,6 +31,17 @@ If you would like to test a beta version of DataManager, you can install the lat
 pod 'DataManager', :git => 'https://github.com/metova/DataManager.git', :branch => 'develop'
 ```
 
+## Swift 3
+[![Build Status](https://travis-ci.org/metova/DataManager.svg)](https://travis-ci.org/metova/DataManager.svg?branch=swift-3)
+[![Coverage Status](https://coveralls.io/repos/github/metova/DataManager/badge.svg?branch=master)](https://coveralls.io/github/metova/DataManager?branch=swift-3)
+
+
+If you are using Swift 3:
+
+```ruby
+pod 'DataManager', :git => 'https://github.com/metova/DataManager.git', :branch => 'swift-3'
+```
+
 ## Usage
 
 #### Setup
@@ -54,7 +65,7 @@ This won't set up the Core Data stack right away. The stack is lazy loaded when 
 DataManager uses generics so you don't have to worry about casting the `NSManagedObject` results to the entity's class every time you perform a fetch. For example, the type of `olderUsers` below is `[User]`.
 
 ```swift
-let predicate = NSPredicate(format: "birthDate > %@", someDate)
+let predicate = NSPredicate(format: "birthDate < %@", someDate)
 let olderUsers = DataManager.fetchObjects(entity: User.self, predicate: predicate, context: DataManager.mainContext)
 ```
 
