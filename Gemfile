@@ -1,2 +1,3 @@
-source	"https://rubygems.org"
-gem 		'slather', '2.0.5', git: 'http://github.com/kpsharp/slather.git'
+source 'https://rubygems.org'
+gem 'slather', '2.3.0'
+gem 'cocoapods', '1.1.0.rc.2'

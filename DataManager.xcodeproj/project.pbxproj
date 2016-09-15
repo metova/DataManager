@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E026F261D8AF95D0027E37E /* Gemfile in Resources */ = {isa = PBXBuildFile; fileRef = 6E026F241D8AF95D0027E37E /* Gemfile */; };
+		6E026F271D8AF95D0027E37E /* Gemfile.lock in Resources */ = {isa = PBXBuildFile; fileRef = 6E026F251D8AF95D0027E37E /* Gemfile.lock */; };
 		6E08D1FF1CCFF2B900426439 /* PersistentStoreTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E08D1FE1CCFF2B900426439 /* PersistentStoreTypeTests.swift */; };
 		6E08D2001CCFF2B900426439 /* PersistentStoreTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E08D1FE1CCFF2B900426439 /* PersistentStoreTypeTests.swift */; };
 		6E08D2011CCFF2B900426439 /* PersistentStoreTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E08D1FE1CCFF2B900426439 /* PersistentStoreTypeTests.swift */; };
@@ -73,6 +75,8 @@
 
 /* Begin PBXFileReference section */
 		6E026F231D8AF53E0027E37E /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
+		6E026F241D8AF95D0027E37E /* Gemfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
+		6E026F251D8AF95D0027E37E /* Gemfile.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Gemfile.lock; sourceTree = "<group>"; };
 		6E08D1FC1CCEC86600426439 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		6E08D1FE1CCFF2B900426439 /* PersistentStoreTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStoreTypeTests.swift; sourceTree = "<group>"; };
 		6E08D2031CCFF75200426439 /* NSManagedObjectContext+TestSwizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+TestSwizzle.swift"; sourceTree = "<group>"; };
@@ -260,6 +264,8 @@
 		6EFD33701CCE6E27009AD145 /* Related Files */ = {
 			isa = PBXGroup;
 			children = (
+				6E026F241D8AF95D0027E37E /* Gemfile */,
+				6E026F251D8AF95D0027E37E /* Gemfile.lock */,
 				6EFD33751CCE6E4D009AD145 /* .gitignore */,
 				6EFD33711CCE6E34009AD145 /* .swiftlint.yml */,
 				6EFD336B1CCE6E27009AD145 /* CHANGELOG.md */,
@@ -507,6 +513,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E026F271D8AF95D0027E37E /* Gemfile.lock in Resources */,
+				6E026F261D8AF95D0027E37E /* Gemfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
