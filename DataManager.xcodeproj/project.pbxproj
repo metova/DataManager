@@ -72,6 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E026F231D8AF53E0027E37E /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
 		6E08D1FC1CCEC86600426439 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		6E08D1FE1CCFF2B900426439 /* PersistentStoreTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStoreTypeTests.swift; sourceTree = "<group>"; };
 		6E08D2031CCFF75200426439 /* NSManagedObjectContext+TestSwizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+TestSwizzle.swift"; sourceTree = "<group>"; };
@@ -268,6 +269,7 @@
 				6E4C18A31CDBA6D900FA65EC /* header_logo.png */,
 				6EFD336F1CCE6E27009AD145 /* Package.swift */,
 				6E08D1FC1CCEC86600426439 /* .travis.yml */,
+				6E026F231D8AF53E0027E37E /* .swift-version */,
 			);
 			name = "Related Files";
 			sourceTree = "<group>";
