@@ -19,7 +19,6 @@ env:
     - DESTINATION="OS=10.0,name=Apple TV 1080p"     SCHEME="$TVOS_FRAMEWORK_SCHEME"    SDK="$TVOS_SDK"    RUN_TESTS="YES" POD_LINT="NO"
     - DESTINATION="OS=3.0,name=Apple Watch - 42mm"  SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO"  POD_LINT="NO"
 before_install:
-  - brew install swiftlint
   - rvm use $RVM_RUBY_VERSION
 install:
   - bundle install --without=documentation --path ../travis_bundle_dir
