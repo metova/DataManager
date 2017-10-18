@@ -21,16 +21,12 @@ class DataManagerTests: XCTestCase {
         DataManager.setUp(withDataModelName: "TestModel", bundle: Bundle(for: DataManagerTests.self), persistentStoreName: "Test", persistentStoreType: .inMemory)
     }
     
-    
-    
     override func tearDown() {
         
         DataManager.deleteAllObjects()
         
         super.tearDown()
     }
-    
-    
     
     // MARK: Helper
     
@@ -39,14 +35,10 @@ class DataManagerTests: XCTestCase {
         return Person(context: DataManager.mainContext, name: name, birthDate: birthDate)
     }
     
-    
-    
     func createTestGroup(title: String = "Test Group") -> Group {
         
         return Group(context: DataManager.mainContext, title: title)
     }
-    
-    
     
     // MARK: - Tests
     // MARK: Child Context Creation
@@ -58,8 +50,6 @@ class DataManagerTests: XCTestCase {
         XCTAssertEqual(childContext.concurrencyType, NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
         XCTAssertTrue(childContext.parent === DataManager.mainContext)
     }
-    
-    
     
     // MARK: Fetch Single Object
     
@@ -82,8 +72,6 @@ class DataManagerTests: XCTestCase {
         XCTAssertTrue(person2 === youngerPerson, "Fetched incorrect Person.")
     }
     
-    
-    
     func testFetchingSingleObjectWithPredicate() {
         
         let person = createTestPerson(name: "Logan Gauthier")
@@ -97,8 +85,6 @@ class DataManagerTests: XCTestCase {
         XCTAssertTrue(person === fetchedPerson, "Fetched incorrect Person.")
     }
     
-    
-    
     func testFetchingSingleObjectsForThrownError() {
         
         executeTestWithErrorThrowingExecuteFetchRequestMock(contextToSwizzle: DataManager.mainContext) {
@@ -111,8 +97,6 @@ class DataManagerTests: XCTestCase {
         }
     }
     
-    
-    
     func testErrorsAreLoggedWhenFetchingSingleObject() {
         
         executeTestWithErrorThrowingExecuteFetchRequestMock(contextToSwizzle: DataManager.mainContext) {
@@ -124,8 +108,6 @@ class DataManagerTests: XCTestCase {
             XCTAssertTrue(didLogError, "Errors caught internally should be logged.")
         }
     }
-    
-    
     
     // MARK: Fetch Multiple Objects
     
@@ -141,8 +123,6 @@ class DataManagerTests: XCTestCase {
         XCTAssertTrue(fetchedPeople.contains(person2))
     }
     
-    
-    
     func testFetchingMultipleObjectsWithPredicate() {
         
         let person1 = createTestPerson()
@@ -157,8 +137,6 @@ class DataManagerTests: XCTestCase {
         XCTAssertTrue(fetchedPeople.contains(person1))
         XCTAssertTrue(fetchedPeople.contains(person2))
     }
-    
-    
     
     func testFetchingMultipleObjectsWithSortDescriptor() {
         
@@ -181,8 +159,6 @@ class DataManagerTests: XCTestCase {
         XCTAssertTrue(fetchedPeopleDescending[1] === person1)
     }
     
-    
-    
     func testFetchingMultipleObjectsForThrownError() {
         
         executeTestWithErrorThrowingExecuteFetchRequestMock(contextToSwizzle: DataManager.mainContext) {
@@ -196,8 +172,6 @@ class DataManagerTests: XCTestCase {
         }
     }
     
-    
-    
     func testErrorsAreLoggedWhenFetchingMultipleObjects() {
         
         executeTestWithErrorThrowingExecuteFetchRequestMock(contextToSwizzle: DataManager.mainContext) {
@@ -209,8 +183,6 @@ class DataManagerTests: XCTestCase {
             XCTAssertTrue(didLogError, "Errors caught internally should be logged.")
         }
     }
-    
-    
     
     // MARK: Deleting
     
@@ -225,8 +197,6 @@ class DataManagerTests: XCTestCase {
         XCTAssertTrue(person1.isDeleted)
         XCTAssertTrue(person2.isDeleted)
     }
-    
-    
     
     func testDeletingAllObjects() {
         
@@ -244,8 +214,6 @@ class DataManagerTests: XCTestCase {
         XCTAssertTrue(group2.isDeleted)
     }
     
-    
-    
     func testErrorsAreLoggedWhenDeleting() {
         
         executeTestWithErrorThrowingExecuteFetchRequestMock(contextToSwizzle: DataManager.mainContext) { 
@@ -257,8 +225,6 @@ class DataManagerTests: XCTestCase {
             XCTAssertTrue(didLogError, "Errors caught internally should be logged.")
         }
     }
-    
-    
     
     // MARK: Persistence
     
@@ -293,8 +259,6 @@ class DataManagerTests: XCTestCase {
         }
     }
     
-    
-    
     func testSynchronousPersistence() {
         
         let person1 = createTestPerson()
@@ -306,8 +270,6 @@ class DataManagerTests: XCTestCase {
         XCTAssertTrue(person1.managedObjectContext?.hasChanges == false)
         XCTAssertTrue(person1.managedObjectContext?.parent?.hasChanges == false)
     }
-    
-    
     
     func testSavingForThrownError() {
         
