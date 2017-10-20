@@ -82,6 +82,7 @@
 		6E08D2031CCFF75200426439 /* NSManagedObjectContext+TestSwizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+TestSwizzle.swift"; sourceTree = "<group>"; };
 		6E08D2071CCFFDF300426439 /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6E08D2081CCFFDF300426439 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		6E40A6CA1F9A443B0023FC14 /* .ruby-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".ruby-version"; sourceTree = "<group>"; };
 		6E478FE81CAD8D81003F2AE1 /* DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E478FEB1CAD8D81003F2AE1 /* DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		6E478FED1CAD8D81003F2AE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -275,6 +276,7 @@
 				6E4C18A31CDBA6D900FA65EC /* header_logo.png */,
 				6EFD336F1CCE6E27009AD145 /* Package.swift */,
 				6E08D1FC1CCEC86600426439 /* .travis.yml */,
+				6E40A6CA1F9A443B0023FC14 /* .ruby-version */,
 				6E026F231D8AF53E0027E37E /* .swift-version */,
 			);
 			name = "Related Files";
