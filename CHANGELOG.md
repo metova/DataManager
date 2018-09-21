@@ -1,5 +1,9 @@
 # DataManager CHANGELOG
 
+## 2.0.0
+
+- Updated for Swift 4.
+
 ## 1.0.0
 
 - Updated for Swift 3.

@@ -10,8 +10,13 @@ import Foundation
 
 func swizzle(original selector: Selector, with newSelector: Selector, for classType: AnyClass) {
     
-    let originalMethod = class_getInstanceMethod(classType, selector)
-    let swizzledMethod = class_getInstanceMethod(classType, newSelector)
+    guard
+        let originalMethod = class_getInstanceMethod(classType, selector),
+        let swizzledMethod = class_getInstanceMethod(classType, newSelector)
+    else {
+        assertionFailure("Swizzle failure - Failed to get one or both instance methods for \(selector) and \(newSelector) for class type \(String(describing: classType)).")
+        return
+    }
     
     let didAddMethod = class_addMethod(classType, selector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))
     

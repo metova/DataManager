@@ -22,15 +22,11 @@ private enum ContextSwizzleBehavior {
     case throwError(NSManagedObjectContext)
 }
 
-
-
 /// The behavior to use when executing the `fetch(_:)` method.
 private var executeFetchRequestMethodBehavior = ContextSwizzleBehavior.useOriginalMethod
 
 /// The behavior to use when executing the `save` method.
 private var saveMethodBehavior = ContextSwizzleBehavior.useOriginalMethod
-
-
 
 // MARK: - XCTestCase Extension
 
@@ -44,6 +40,7 @@ extension XCTestCase {
      */
     func executeTestWithErrorThrowingExecuteFetchRequestMock(contextToSwizzle: NSManagedObjectContext, test: () -> Void) {
         
+        setUpSwizzling()
         executeFetchRequestMethodBehavior = .throwError(contextToSwizzle)
         test()
         executeFetchRequestMethodBehavior = .useOriginalMethod
@@ -57,13 +54,21 @@ extension XCTestCase {
      */
     func executeTestWithErrorThrowingSaveMock(contextToSwizzle: NSManagedObjectContext, test: () -> Void) {
         
+        setUpSwizzling()
         saveMethodBehavior = .throwError(contextToSwizzle)
         test()
         saveMethodBehavior = .useOriginalMethod
     }
+    
+    /// Swizzle `NSManagedObjectContext`'s `fetch(_:)` and `save` methods in preparation for tests that require custom behavior.
+    private func setUpSwizzling() {
+        
+        DispatchQueue.once(withToken: "NSManagedObjectContextSwizzle") {
+            swizzle(original: #selector(NSManagedObjectContext.fetch(_:)), with: #selector(NSManagedObjectContext.dataManagerTestExecute(fetchRequest:)), for: NSManagedObjectContext.self)
+            swizzle(original: #selector(NSManagedObjectContext.save), with: #selector(NSManagedObjectContext.dataManagerTestSave), for: NSManagedObjectContext.self)
+        }
+    }
 }
-
-
 
 // MARK: - DispatchQueue Extension
 
@@ -89,27 +94,13 @@ extension DispatchQueue {
     }
 }
 
-
-
 // MARK: - NSManagedObjectContext Extension
 
 extension NSManagedObjectContext {
     
-    // MARK: Overrides
-    
-    open override class func initialize() {
-        
-       DispatchQueue.once(withToken: "NSManagedObjectContextSwizzle") {
-            swizzle(original: #selector(fetch(_:)), with: #selector(dataManagerTestExecute(fetchRequest:)), for: self)
-            swizzle(original: #selector(save), with: #selector(dataManagerTestSave), for: self)
-        }
-    }
-
-    
-    
     // MARK: Swizzled Methods
     
-    func dataManagerTestExecute(fetchRequest: NSFetchRequest<NSManagedObject>) throws -> [AnyObject] {
+    @objc func dataManagerTestExecute(fetchRequest: NSFetchRequest<NSManagedObject>) throws -> [AnyObject] {
         
         switch executeFetchRequestMethodBehavior {
         case .throwError(let context) where context === self:
@@ -119,9 +110,7 @@ extension NSManagedObjectContext {
         }
     }
     
-    
-    
-    func dataManagerTestSave() throws {
+    @objc func dataManagerTestSave() throws {
         
         switch saveMethodBehavior {
         case .throwError(let context) where context === self:

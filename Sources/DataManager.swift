@@ -56,8 +56,6 @@ public enum PersistentStoreType {
     }
 }
 
-
-
 // MARK: - Logger
 
 /**
@@ -76,8 +74,6 @@ public protocol DataManagerErrorLogger {
     func log(error: NSError, file: StaticString, function: StaticString, line: UInt)
 }
 
-
-
 // MARK: - DefaultLogger
 
 private class DefaultLogger: DataManagerErrorLogger {
@@ -88,16 +84,12 @@ private class DefaultLogger: DataManagerErrorLogger {
     }
 }
 
-
-
 // MARK: - Constants
 
 private struct Constants {
     
     static fileprivate let mustCallSetupMethodErrorMessage = "DataManager must be set up using setUp(withDataModelName:bundle:persistentStoreType:) before it can be used."
 }
-
-
 
 // MARK: - DataManager
 
@@ -119,8 +111,6 @@ public final class DataManager {
     /// The value to use for `fetchBatchSize` when fetching objects.
     public static var defaultFetchBatchSize = 50
     
-    
-    
     // MARK: Setup
     
     /**
@@ -139,8 +129,6 @@ public final class DataManager {
         DataManager.persistentStoreType = persistentStoreType
     }
     
-    
-    
     // MARK: Core Data Stack
     
     private static var applicationDocumentsDirectory: URL = {
@@ -148,8 +136,6 @@ public final class DataManager {
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return urls[urls.count - 1]
     }()
-    
-    
     
     private static var managedObjectModel: NSManagedObjectModel = {
 
@@ -167,8 +153,6 @@ public final class DataManager {
         
         return managedObjectModel
     }()
-    
-    
     
     private static var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         
@@ -197,16 +181,12 @@ public final class DataManager {
         return coordinator
     }()
     
-    
-    
     static var privateContext: NSManagedObjectContext = {
         
         let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         context.persistentStoreCoordinator = DataManager.persistentStoreCoordinator
         return context
     }()
-    
-    
     
     /// A MainQueueConcurrencyType context whose parent is a PrivateQueueConcurrencyType context. The PrivateQueueConcurrencyType context is the root context.
     public static var mainContext: NSManagedObjectContext = {
@@ -215,8 +195,6 @@ public final class DataManager {
         context.parent = DataManager.privateContext
         return context
     }()
-    
-    
     
     // MARK: Child Contexts
     
@@ -233,8 +211,6 @@ public final class DataManager {
         managedObjectContext.parent = parent
         return managedObjectContext
     }
-    
-    
     
     // MARK: Fetching
     
@@ -264,8 +240,6 @@ public final class DataManager {
         }
     }
     
-    
-    
     /**
      This is a convenience method for performing a fetch request that fetches a single object. Note: Errors thrown by executeFetchRequest are suppressed and logged in order to make usage less verbose. If detecting thrown errors is needed in your use case, you will need to use Core Data directly.
      
@@ -293,8 +267,6 @@ public final class DataManager {
         }
     }
     
-    
-    
     // MARK: Deleting
     
     /**
@@ -309,8 +281,6 @@ public final class DataManager {
             context.delete(object)
         }
     }
-    
-    
     
     /**
      For each entity in the model, fetches all objects into memory, iterates over each object and deletes them using the main context. Note: Errors thrown by executeFetchRequest are suppressed and logged in order to make usage less verbose. If detecting thrown errors is needed in your use case, you will need to use Core Data directly.
@@ -332,8 +302,6 @@ public final class DataManager {
             }
         }
     }
-    
-    
     
     // MARK: Saving
     
@@ -382,8 +350,6 @@ public final class DataManager {
             }
         }
     }
-    
-    
     
     // MARK: Logging
     
