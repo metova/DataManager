@@ -15,7 +15,8 @@ DataManager is a lightweight Core Data utility. It is not a replacement/wrapper 
 
 ## Requirements
 
-- Swift 4.0
+- iOS 9.0
+- Swift 4.2
 
 ## Installation
 
