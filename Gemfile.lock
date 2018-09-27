@@ -59,6 +59,7 @@ GEM
     netrc (0.11.0)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
+    rouge (2.0.7)
     ruby-macho (1.2.0)
     slather (2.4.6)
       CFPropertyList (~> 2.2)
@@ -75,6 +76,8 @@ GEM
       claide (>= 1.0.2, < 2.0)
       colored2 (~> 3.1)
       nanaimo (~> 0.2.6)
+    xcpretty (0.3.0)
+      rouge (~> 2.0.7)
 
 PLATFORMS
   ruby
@@ -82,6 +85,7 @@ PLATFORMS
 DEPENDENCIES
   cocoapods
   slather
+  xcpretty
 
 BUNDLED WITH
    1.16.2
