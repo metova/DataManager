@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 class Person: NSManagedObject {
 
     // MARK: Initialization
@@ -25,8 +24,6 @@ class Person: NSManagedObject {
         self.name = name
         self.birthDate = birthDate
     }
-    
-    
     
     override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
         super.init(entity: entity, insertInto: context)

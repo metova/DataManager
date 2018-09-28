@@ -15,7 +15,8 @@ DataManager is a lightweight Core Data utility. It is not a replacement/wrapper 
 
 ## Requirements
 
-- Swift 3.0
+- iOS 9.0
+- Swift 4.2
 
 ## Installation
 
@@ -39,7 +40,7 @@ When your app is launched, set up `DataManager` with the data model name and a n
 ```swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-    DataManager.setUp(withDataModelName: "MyApp", bundle: Bundle.main, persistentStoreName: "MyApp")
+    DataManager.setUp(withDataModelName: "MyApp", bundle: .main, persistentStoreName: "MyApp")
 
     /* ... */
 

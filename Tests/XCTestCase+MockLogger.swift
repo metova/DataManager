@@ -10,7 +10,6 @@ import Foundation
 import XCTest
 @testable import DataManager
 
-
 // MARK: XCTestCase Extension
 
 extension XCTestCase {
@@ -25,8 +24,6 @@ extension XCTestCase {
         return mockLogger.didExecuteLogMethod
     }
 }
-
-
 
 // MARK: MockLogger
 

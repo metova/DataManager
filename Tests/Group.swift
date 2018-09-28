@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 class Group: NSManagedObject {
 
     // MARK: Initialization
@@ -24,8 +23,6 @@ class Group: NSManagedObject {
         self.init(entity: entity, insertInto: context)
         self.title = title
     }
-    
-    
     
     override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
         super.init(entity: entity, insertInto: context)
