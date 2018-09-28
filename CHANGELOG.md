@@ -2,7 +2,7 @@
 
 ## 2.0.0
 
-- Updated for Swift 4.
+- Updated for Swift 4.2.
 
 ## 1.0.0
 
