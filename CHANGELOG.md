@@ -1,5 +1,9 @@
 # DataManager CHANGELOG
 
+## 2.0.1
+
+- Updated for Swift 5.3.
+
 ## 2.0.0
 
 - Updated for Swift 4.2.
