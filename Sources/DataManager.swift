@@ -320,7 +320,7 @@ public final class DataManager {
                 do {
                     try self.mainContext.save()
                 }
-                catch var error as NSError {
+                catch let error as NSError {
                     mainContextSaveError = error
                 }
             }

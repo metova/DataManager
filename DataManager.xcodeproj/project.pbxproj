@@ -88,7 +88,6 @@
 		4382E68B031086E14FED15B7 /* libPods-DataManager iOS Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DataManager iOS Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6756E1E6F9EC604FE639A652 /* libPods-DataManager-DataManager tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DataManager-DataManager tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67DA8CD8C9D5043ECCCD64AA /* libPods-DataManager tvOS Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DataManager tvOS Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E026F231D8AF53E0027E37E /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
 		6E026F241D8AF95D0027E37E /* Gemfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; indentWidth = 2; path = Gemfile; sourceTree = "<group>"; tabWidth = 2; };
 		6E026F251D8AF95D0027E37E /* Gemfile.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Gemfile.lock; sourceTree = "<group>"; };
 		6E08D1FC1CCEC86600426439 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
@@ -317,7 +316,6 @@
 				6EFD336F1CCE6E27009AD145 /* Package.swift */,
 				6E08D1FC1CCEC86600426439 /* .travis.yml */,
 				6E40A6CA1F9A443B0023FC14 /* .ruby-version */,
-				6E026F231D8AF53E0027E37E /* .swift-version */,
 			);
 			name = "Related Files";
 			sourceTree = "<group>";
