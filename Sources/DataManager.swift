@@ -109,7 +109,7 @@ public final class DataManager {
     public static var errorLogger: DataManagerErrorLogger? = DefaultLogger()
     
     /// The value to use for `fetchBatchSize` when fetching objects.
-    public static var defaultFetchBatchSize = 50
+    public static var defaultFetchBatchSize = 0
     
     // MARK: Setup
     
@@ -320,7 +320,7 @@ public final class DataManager {
                 do {
                     try self.mainContext.save()
                 }
-                catch var error as NSError {
+                catch let error as NSError {
                     mainContextSaveError = error
                 }
             }
