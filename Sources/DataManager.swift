@@ -104,6 +104,7 @@ public final class DataManager {
     private static var dataModelBundle: Bundle?
     private static var persistentStoreName: String?
     private static var persistentStoreType = PersistentStoreType.sqLite
+    private static var groupIdentifier: String?
     
     /// The logger to use for logging errors caught internally. A default logger is used if a custom one isn't provided. Assigning nil to this property prevents DataManager from emitting any logs to the console.
     public static var errorLogger: DataManagerErrorLogger? = DefaultLogger()
@@ -120,18 +121,26 @@ public final class DataManager {
      - parameter bundle:              The bundle in which the data model schema file resides.
      - parameter persistentStoreName: The name of the persistent store.
      - parameter persistentStoreType: The persistent store type. Defaults to SQLite.
+     - parameter groupIdentifier:     The App-Group identifier if exist. Defaults to nil.
      */
-    public static func setUp(withDataModelName dataModelName: String, bundle: Bundle, persistentStoreName: String, persistentStoreType: PersistentStoreType = .sqLite) {
+    public static func setUp(withDataModelName dataModelName: String, bundle: Bundle, persistentStoreName: String, persistentStoreType: PersistentStoreType = .sqLite, groupIdentifier: String? = nil) {
         
         DataManager.dataModelName = dataModelName
         DataManager.dataModelBundle = bundle
         DataManager.persistentStoreName = persistentStoreName
         DataManager.persistentStoreType = persistentStoreType
+        DataManager.groupIdentifier = groupIdentifier
     }
     
     // MARK: Core Data Stack
     
     private static var applicationDocumentsDirectory: URL = {
+        
+        // If present, create URL using App-Group identifier
+        if let groupIdentifier = DataManager.groupIdentifier,
+           let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier) {
+            return url
+        }
         
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return urls[urls.count - 1]
