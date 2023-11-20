@@ -21,7 +21,7 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
 force_cast: error
 force_try: error
 force_unwrapping: error
-variable_name:
+identifier_name:
   max_length:
     warning: 55
     error: 60
@@ -45,10 +45,8 @@ variable_name:
 trailing_newline: error
 comma: error
 colon: error
-opening_brace: error
 empty_count: error
 legacy_constructor: error
-statement_position: error
 legacy_constant: error
 trailing_semicolon: error
 

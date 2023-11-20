@@ -1,5 +1,10 @@
 # DataManager CHANGELOG
 
+## 2.1.0
+
+- Added support for App-Group identifier.
+- Updated use of deprecated CoreData instance method (`addPersistentStore(ofType:configurationName:at:options:)`).
+
 ## 2.0.1
 
 - Updated for Swift 5.3.

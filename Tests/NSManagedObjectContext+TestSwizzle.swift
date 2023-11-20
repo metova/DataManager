@@ -19,7 +19,6 @@ import XCTest
 private enum ContextSwizzleBehavior {
     
     case useOriginalMethod
-    // swiftlint:disable:next identifier_name
     case throwError(NSManagedObjectContext)
 }
 
