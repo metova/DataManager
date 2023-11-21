@@ -54,6 +54,18 @@ public enum PersistentStoreType {
             return NSInMemoryStoreType
         }
     }
+    
+    @available(iOS 15.0, *)
+    var storeType: NSPersistentStore.StoreType {
+        switch self {
+        case .sqLite:
+            return .sqlite
+        case .binary:
+            return .binary
+        case .inMemory:
+            return .inMemory
+        }
+    }
 }
 
 // MARK: - Logger
@@ -178,7 +190,11 @@ public final class DataManager {
         ]
         
         do {
-            try coordinator.addPersistentStore(ofType: DataManager.persistentStoreType.stringValue, configurationName: nil, at: url, options: options)
+            if #available(iOS 15.0, *) {
+                try coordinator.addPersistentStore(type: DataManager.persistentStoreType.storeType, configuration: nil, at: url, options: options)
+            } else {
+                try coordinator.addPersistentStore(ofType: DataManager.persistentStoreType.stringValue, configurationName: nil, at: url, options: options)
+            }
         }
         catch let error as NSError {
             fatalError("Failed to initialize the application's persistent data: \(error.localizedDescription)")
