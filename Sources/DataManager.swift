@@ -191,7 +191,7 @@ public final class DataManager {
         
         do {
             if #available(iOS 15.0, *) {
-                try coordinator.addPersistentStore(type: DataManager.persistentStoreType.storeType, configuration: nil, at: url, options: options)
+                _ = try coordinator.addPersistentStore(type: DataManager.persistentStoreType.storeType, configuration: nil, at: url, options: options)
             } else {
                 try coordinator.addPersistentStore(ofType: DataManager.persistentStoreType.stringValue, configurationName: nil, at: url, options: options)
             }
